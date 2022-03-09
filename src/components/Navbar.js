@@ -40,7 +40,7 @@ export default function Navbar() {
           <div className="badge mr-10">
             <img className="h-17 pb-[7px] cursor-pointer" src={badge} alt="" />
           </div>
-          <div className="avatarm mr-4">
+          <div className="avatar mr-4">
             <img className="h-17 cursor-pointer" src={avatar} alt="" />
           </div>
           <div className="menu">
