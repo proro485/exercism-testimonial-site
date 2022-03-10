@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import search from '../assets/search.svg';
 import hexLogo from '../assets/hexLogo.svg';
 import dropdown from '../assets/dropdown.svg';
@@ -6,6 +6,8 @@ import dropdownBig from '../assets/dropdownBig.svg';
 import Testimonials from './Testimonials';
 
 export default function List() {
+  const [currentPage, setCurrentPage] = useState(1);
+
   return (
     <div className="list min-h-[70vh] mb-11 mx-8 shadow-[0_4px_42px_0px_rgba(79,114,205,0.15)] rounded-lg">
       <div className="list_header flex justify-between m-4">
@@ -29,7 +31,7 @@ export default function List() {
       </div>
 
       <hr className="bg-[#D5D8E4]" />
-      <Testimonials />
+      <Testimonials currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
     </div>
   );

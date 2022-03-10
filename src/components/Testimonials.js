@@ -3,12 +3,11 @@ import React, { useEffect, useState } from 'react'
 import rightArrow from '../assets/rightArrow.svg';
 import loader from '../assets/loader.svg';
 
-export default function Testimonials() {
+export default function Testimonials(props) {
 
-  const [currentPage, setCurrentPage] = useState(1);
   const [testimonials, setTestimonials] = useState([]);
   const [loading, setLoading] = useState(true);
-  const URL = `https://exercism.org/api/v2/hiring/testimonials?page=${currentPage}`;
+  const URL = `https://exercism.org/api/v2/hiring/testimonials?page=${props.currentPage}`;
 
   const spliceContent = (content) => {
     const contentArray = content.split(' ');
@@ -18,7 +17,29 @@ export default function Testimonials() {
   const handleDateTime = (dateTime) => {
     const dateTimeNow = new Date();
     const dateTimeThen = new Date(dateTime);
+    const difference = dateTimeNow - dateTimeThen;
+    const duration = [
+      Math.floor(difference / (1000 * 60 * 60 * 24 * 365)),
+      Math.floor(difference / (1000 * 60 * 60 * 24 * 30)),
+      Math.floor(difference / (1000 * 60 * 60 * 24)),
+      Math.floor(difference / (1000 * 60 * 60)),
+      Math.floor(difference / (1000 * 60)),
+      Math.floor(difference / 1000)
+    ];
 
+    if (duration[0] > 0) {
+      return duration[0] != 1 ? `${duration[0]} years ago` : 'a year ago';
+    } else if (duration[1] > 0) {
+      return duration[1] != 1 ? `${duration[1]} months ago` : 'a month ago';
+    } else if (duration[2] > 0) {
+      return duration[2] != 1 ? `${duration[2]} days ago` : 'a day ago';
+    } else if (duration[3] > 0) {
+      return duration[3] != 1 ? `${duration[3]} hours ago` : 'an hour ago';
+    } else if (duration[4] > 0) {
+      return duration[4] != 1 ? `${duration[4]} minutes ago` : 'a minute ago';
+    } else if (duration[5] > 0) {
+      return duration[5] != 1 ? `${duration[5]} seconds ago` : 'a second ago';
+    }
   }
 
   useEffect(() => {
@@ -32,7 +53,7 @@ export default function Testimonials() {
 
     fetchData();
 
-  }, [currentPage]);
+  }, [props.currentPage]);
   // 
   return (
     <div className="testimonials flex flex-col relative min-h-[70vh]">
@@ -65,7 +86,7 @@ export default function Testimonials() {
                 </div>
 
                 <div className="testimonial_right flex items-center font-poppins text-sm">
-                  {item.created_at}
+                  {handleDateTime(item.created_at)}
                   <img className="ml-12 text-[#5C5589] cursor-pointer" src={rightArrow} alt="" />
                 </div>
               </div>
