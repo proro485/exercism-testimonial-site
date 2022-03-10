@@ -5,9 +5,10 @@ import loader from '../assets/loader.svg';
 
 export default function Testimonials(props) {
 
-  const [testimonials, setTestimonials] = useState([]);
   const [loading, setLoading] = useState(true);
-  const URL = `https://exercism.org/api/v2/hiring/testimonials?page=${props.currentPage}`;
+  const [testimonials, setTestimonials] = useState([]);
+  console.log(props.sortType);
+  const URL = `https://exercism.org/api/v2/hiring/testimonials?page=${props.currentPage}&order=${props.sortType}`;
 
   const spliceContent = (content) => {
     const contentArray = content.split(' ');
@@ -47,14 +48,14 @@ export default function Testimonials(props) {
     async function fetchData() {
       setLoading(true);
       const { data: { testimonials: { results } } } = await axios.get(URL);
-      setTestimonials(results);
+      setTestimonials([...results]);
       setLoading(false);
     }
 
     fetchData();
 
-  }, [props.currentPage]);
-  // 
+  }, [props.currentPage, props.sortType]);
+
   return (
     <div className="testimonials flex flex-col relative min-h-[70vh]">
       {
@@ -64,34 +65,37 @@ export default function Testimonials(props) {
       }
       {
         testimonials.length != 0 && testimonials.map((item, idx) => {
-          return (
-            <div className="flex px-7 h-16 border-b border-[#EAECF3] hover:bg-[#F4F7FD]" key={idx}>
+          if (props.exercise == '' || props.exercise.toLowerCase() == item.exercise.title.toLowerCase()) {
+            console.log(idx);
+            return (
+              <div className="flex px-7 h-16 border-b border-[#EAECF3] hover:bg-[#F4F7FD]" key={idx}>
 
-              <div className="testimonial_left flex items-center w-1/2">
-                <div className="track h-8">
-                  <img className="h-full" src={item.track.icon_url} alt="" />
+                <div className="testimonial_left flex items-center w-1/2">
+                  <div className="track h-8">
+                    <img className="h-full" src={item.track.icon_url} alt="" />
+                  </div>
+                  <div className="avatar h-10 ml-6">
+                    <img className="h-full rounded-full" src={item.mentor.avatar_url} alt="" />
+                  </div>
+                  <div className="details ml-5">
+                    <div className="handle font-poppins font-medium text-[#130B43]">{item.mentor.handle}</div>
+                    <div className="handle font-poppins text-sm text-[#5C5589]">{`on ${item.exercise.title} in ${item.track.title}`}</div>
+                  </div>
                 </div>
-                <div className="avatar h-10 ml-6">
-                  <img className="h-full rounded-full" src={item.mentor.avatar_url} alt="" />
-                </div>
-                <div className="details ml-5">
-                  <div className="handle font-poppins font-medium text-[#130B43]">{item.mentor.handle}</div>
-                  <div className="handle font-poppins text-sm text-[#5C5589]">{`on ${item.exercise.title} in ${item.track.title}`}</div>
+
+                <div className="testimonial_center flex justify-between w-full">
+                  <div className="testimonial_center flex items-center p-0 font-poppins text-left text-[15px] text-[#3F3A5A]">
+                    {spliceContent(item.content)}
+                  </div>
+
+                  <div className="testimonial_right flex items-center font-poppins text-sm">
+                    {handleDateTime(item.created_at)}
+                    <img className="ml-12 text-[#5C5589] cursor-pointer" src={rightArrow} alt="" />
+                  </div>
                 </div>
               </div>
-
-              <div className="testimonial_center flex justify-between w-full">
-                <div className="testimonial_center flex items-center p-0 font-poppins text-left text-[15px] text-[#3F3A5A]">
-                  {spliceContent(item.content)}
-                </div>
-
-                <div className="testimonial_right flex items-center font-poppins text-sm">
-                  {handleDateTime(item.created_at)}
-                  <img className="ml-12 text-[#5C5589] cursor-pointer" src={rightArrow} alt="" />
-                </div>
-              </div>
-            </div>
-          );
+            );
+          }
         })
       }
     </div >
