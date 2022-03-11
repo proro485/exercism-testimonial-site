@@ -13,7 +13,6 @@ export default function Pagination(props) {
     if (props.currentPage < props.pages) {
       props.setCurrentPage(props.currentPage + 1);
     }
-    console.log(props.currentPage);
   }
 
   const handleDisablePrevious = () => {
@@ -28,10 +27,6 @@ export default function Pagination(props) {
       return true;
     }
     return false;
-  }
-
-  const onClick = () => {
-
   }
 
   const handlePagination = () => {
