@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/hiring-frontend-developer/static/css/main.ff82b96a.css",
+    "main.js": "/hiring-frontend-developer/static/js/main.ff26df49.js",
+    "static/media/avatar.svg": "/hiring-frontend-developer/static/media/avatar.ddf1fd7cc34c7ec705b49bff9db217ef.svg",
+    "static/media/badge.svg": "/hiring-frontend-developer/static/media/badge.fd9e22868d2722d469064dd7fc68e19d.svg",
+    "static/media/logo.svg": "/hiring-frontend-developer/static/media/logo.3816820aae6ba5a6b586b8cb9415cad7.svg",
+    "static/media/dashboard.svg": "/hiring-frontend-developer/static/media/dashboard.f30635112aa12c3159c64a222c274745.svg",
+    "static/media/hexLogo.svg": "/hiring-frontend-developer/static/media/hexLogo.943c7f739f0a921b57e4f8b069b9e254.svg",
+    "static/media/notifications.svg": "/hiring-frontend-developer/static/media/notifications.77a9c9a051d1afe4e264b83d751ef2a0.svg",
+    "static/media/testimonial.svg": "/hiring-frontend-developer/static/media/testimonial.5d550da433cb207218e832f8c3dd6951.svg",
+    "static/media/chatBubble.svg": "/hiring-frontend-developer/static/media/chatBubble.b8f42e8af018584abe80756d21d6a192.svg",
+    "static/media/contribute.svg": "/hiring-frontend-developer/static/media/contribute.a3acbc93d989ba4860b604d89006b1d7.svg",
+    "static/media/loader.svg": "/hiring-frontend-developer/static/media/loader.a9956c46f73bd2ee92367c8556ae3385.svg",
+    "static/media/menu.svg": "/hiring-frontend-developer/static/media/menu.bebe1059401338e6f9a0793776c6269c.svg",
+    "static/media/hexagon.svg": "/hiring-frontend-developer/static/media/hexagon.a37031243824142d6c47ac0e5cb75680.svg",
+    "static/media/mentoring.svg": "/hiring-frontend-developer/static/media/mentoring.659ae1d60205d7c2fb539a20ea980030.svg",
+    "index.html": "/hiring-frontend-developer/index.html",
+    "static/media/tracks.svg": "/hiring-frontend-developer/static/media/tracks.9f38395bb2f01e64b3083d7dda9dec57.svg",
+    "static/media/search.svg": "/hiring-frontend-developer/static/media/search.67dd6615fa03faf89083c6b709d28cf9.svg",
+    "static/media/rightPointer.svg": "/hiring-frontend-developer/static/media/rightPointer.f37454383c8ee9a7cd2624b219981d76.svg",
+    "static/media/leftPointer.svg": "/hiring-frontend-developer/static/media/leftPointer.785e7a190cce820055b885783c2be74b.svg",
+    "static/media/dropdown.svg": "/hiring-frontend-developer/static/media/dropdown.445a51dd97637ef534b95bf3f09f7b2a.svg",
+    "static/media/rightArrow.svg": "/hiring-frontend-developer/static/media/rightArrow.b7de663c2168c7ec05ffc7c6955fa9f2.svg",
+    "static/media/dropdownBig.svg": "/hiring-frontend-developer/static/media/dropdownBig.13630f6511af874fa8a97a5fdc433a83.svg",
+    "static/media/zigzag.svg": "/hiring-frontend-developer/static/media/zigzag.94a49a9c1d57e2ca7a6bc2195d93e3fc.svg",
+    "main.ff82b96a.css.map": "/hiring-frontend-developer/static/css/main.ff82b96a.css.map",
+    "main.ff26df49.js.map": "/hiring-frontend-developer/static/js/main.ff26df49.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ff82b96a.css",
+    "static/js/main.ff26df49.js"
+  ]
+}
