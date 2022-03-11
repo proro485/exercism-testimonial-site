@@ -5,13 +5,12 @@ import SortDropdown from './SortDropdown';
 import TrackDropdown from './TrackDropdown';
 import Pagination from './Pagination';
 
-export default function List() {
+export default function List(props) {
   const [currentPage, setCurrentPage] = useState(1);
   const [selected, setSelected] = useState(0);
   const [exercise, setExercise] = useState('');
   const [pages, setPages] = useState(0);
   const [tracks, setTracks] = useState({});
-  const [tracksCount, setTracksCount] = useState({});
   const [whichTrack, setWhichTrack] = useState('all');
   const sortType = {
     0: 'newest_first',
@@ -27,7 +26,7 @@ export default function List() {
       <div className="list_header flex justify-between m-4">
 
         <div className="list_headerRight flex items-center">
-          <TrackDropdown tracks={tracks} tracksCount={tracksCount} whichTrack={whichTrack} setWhichTrack={setWhichTrack} />
+          <TrackDropdown tracks={tracks} tracksCount={props.tracksCount} whichTrack={whichTrack} setWhichTrack={setWhichTrack} />
           <div className="search rounded-[5px] w-[416px] flex items-center border border-white bg-[#F0F3F9] text-[#5C5589] font-poppins 
             hover:border hover:border-[#2E57E8] hover:shadow-[0_0px_2px_2px_rgba(46,87,232,0.25)]"
           >
@@ -49,7 +48,7 @@ export default function List() {
         exercise={exercise}
         sortType={sortType[selected]}
         setPages={setPages}
-        setTracks={setTracks} setTracksCount={setTracksCount}
+        setTracks={setTracks} setTracksCount={props.setTracksCount}
         whichTrack={whichTrack}
       />
       <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} pages={pages} />
