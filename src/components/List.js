@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import search from '../assets/search.svg';
-import hexLogo from '../assets/hexLogo.svg';
-import dropdown from '../assets/dropdown.svg';
 import Testimonials from './Testimonials';
 import SortDropdown from './SortDropdown';
 import TrackDropdown from './TrackDropdown';
