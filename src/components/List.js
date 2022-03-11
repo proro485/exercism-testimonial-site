@@ -28,10 +28,13 @@ export default function List() {
 
         <div className="list_headerRight flex items-center">
           <TrackDropdown tracks={tracks} tracksCount={tracksCount} whichTrack={whichTrack} setWhichTrack={setWhichTrack} />
-          <div className="search rounded-[5px] w-[416px] flex items-center bg-[#F0F3F9] text-[#5C5589] font-poppins">
+          <div className="search rounded-[5px] w-[416px] flex items-center border border-white bg-[#F0F3F9] text-[#5C5589] font-poppins 
+            hover:border hover:border-[#2E57E8] hover:shadow-[0_0px_2px_2px_rgba(46,87,232,0.25)]"
+          >
             <img className="ml-5 h-6" src={search} alt="" />
             <input value={exercise} onChange={handleChange}
-              className="bg-[#F0F3F9] rounded-[5px] w-full mx-[21px] my-[12px] border-none outline-none"
+              className="bg-[#F0F3F9] rounded-[5px] w-full mx-[21px] my-[12px] border-none outline-none placeholder:text-[#5C5589] focus:text-[#130B43]"
+
               type="text" placeholder='Filter by exercise title'
             />
           </div>
