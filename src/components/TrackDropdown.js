@@ -19,7 +19,6 @@ export default function TrackDropdown(props) {
   }
 
   useEffect(() => {
-    setLogo(logo);
   }, [logo]);
 
   useEffect(() => {
@@ -40,7 +39,7 @@ export default function TrackDropdown(props) {
   }, []);
 
   return (
-    <div className="trackDropDown relative cursor-pointer" onClick={() => setDropDown(!dropDown)} onMouseLeave={() => setDropDown(false)}>
+    <div className="trackDropDown relative cursor-pointer font-poppins text-[#3D3B45]" onClick={() => setDropDown(!dropDown)} onMouseLeave={() => setDropDown(false)}>
       <div className="flex" >
         <img className="ml-2 mr-3 h-12" src={logo === "all" ? hexLogo : `${logo}`} alt="" />
         <img className="mr-4 w-3" src={dropdown} alt="" />
@@ -51,18 +50,25 @@ export default function TrackDropdown(props) {
           {
             Object.keys(props.tracks).map((track, idx) => {
               return (
-                <div className={`flex py-2 px-6 items-center ${props.whichTrack == props.tracks[track] && "bg-[#F0F3F9]"}`} key={idx}
+                <div className={`flex justify-between py-2 px-6 items-center ${props.whichTrack == props.tracks[track] && "bg-[#F0F3F9]"}`} key={idx}
                   onClick={() => handleChangeTrack(props.tracks[track])}
                 >
-                  <input type="radio" className="mr-6 cursor-pointer" checked={props.tracks[track] == props.whichTrack} onChange={() => { }} />
-                  <img className="mr-4 h-10" src={track != 0 ? `${allTracks[props.tracks[track]].icon}` : hexLogo} alt="" />
-                  {allTracks[props.tracks[track]].title}
+                  <div className="flex items-center">
+                    <input type="radio" className="mr-6 cursor-pointer" checked={props.tracks[track] == props.whichTrack} onChange={() => { }} />
+                    <img className="mr-4 h-10" src={track != 0 ? `${allTracks[props.tracks[track]].icon}` : hexLogo} alt="" />
+                    <div className="title">
+                      {allTracks[props.tracks[track]].title}
+                    </div>
+                  </div>
+                  <div className={`count text-sm px-3 py-[3px] border ${props.tracks[track] == props.whichTrack ? "border-[#6A6781] text-[#130B43]" : "border-[#A9A6BD] text-[#5C5589]"}  rounded-[100px]`}>
+                    {props.tracksCount[props.tracks[track]]}
+                  </div>
                 </div>
               );
             })
           }
         </div>
       }
-    </div>
+    </div >
   );
 }
