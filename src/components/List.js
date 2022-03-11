@@ -4,14 +4,17 @@ import hexLogo from '../assets/hexLogo.svg';
 import dropdown from '../assets/dropdown.svg';
 import Testimonials from './Testimonials';
 import SortDropdown from './SortDropdown';
+import TrackDropdown from './TrackDropdown';
 import Pagination from './Pagination';
 
 export default function List() {
   const [currentPage, setCurrentPage] = useState(1);
-  const [dropDown, setDropDown] = useState(false);
   const [selected, setSelected] = useState(0);
   const [exercise, setExercise] = useState('');
   const [pages, setPages] = useState(0);
+  const [tracks, setTracks] = useState({});
+  const [tracksCount, setTracksCount] = useState({});
+  const [whichTrack, setWhichTrack] = useState('all');
   const sortType = {
     0: 'newest_first',
     1: 'oldest_first'
@@ -26,8 +29,7 @@ export default function List() {
       <div className="list_header flex justify-between m-4">
 
         <div className="list_headerRight flex items-center">
-          <img className="ml-2 mr-3" src={hexLogo} alt="" />
-          <img className="mr-4 cursor-pointer w-3" src={dropdown} alt="" />
+          <TrackDropdown tracks={tracks} tracksCount={tracksCount} whichTrack={whichTrack} setWhichTrack={setWhichTrack} />
           <div className="search rounded-[5px] w-[416px] flex items-center bg-[#F0F3F9] text-[#5C5589] font-poppins">
             <img className="ml-5 h-6" src={search} alt="" />
             <input value={exercise} onChange={handleChange}
@@ -37,12 +39,18 @@ export default function List() {
           </div>
         </div>
 
-        <SortDropdown selected={selected} setSelected={setSelected} dropDown={dropDown} setDropDown={setDropDown} />
+        <SortDropdown selected={selected} setSelected={setSelected} />
 
       </div>
 
       <hr className="bg-[#D5D8E4] h-[2px]" />
-      <Testimonials currentPage={currentPage} setCurrentPage={setCurrentPage} exercise={exercise} sortType={sortType[selected]} setPages={setPages} />
+      <Testimonials currentPage={currentPage} setCurrentPage={setCurrentPage}
+        exercise={exercise}
+        sortType={sortType[selected]}
+        setPages={setPages}
+        setTracks={setTracks} setTracksCount={setTracksCount}
+        whichTrack={whichTrack}
+      />
       <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} pages={pages} />
 
     </div>

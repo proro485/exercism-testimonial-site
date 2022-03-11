@@ -46,15 +46,35 @@ export default function Testimonials(props) {
 
     async function fetchData() {
       setLoading(true);
-      const { data: { testimonials } } = await axios.get(URL);
+      let finalURL = URL;
+      if (props.whichTrack != 'all') {
+        finalURL = finalURL + '&track=' + props.whichTrack;
+      }
+
+      const { data: { testimonials } } = await axios.get(finalURL);
       setTestimonials(testimonials.results);
       setLoading(false);
       props.setPages(testimonials.pagination.total_pages);
+
+      const tracks = { 0: "all" };
+      for (let i = 0; i < testimonials.tracks.length; i++) {
+        tracks[i + 1] = testimonials.tracks[i];
+      }
+
+      testimonials.track_counts["all"] = 0;
+      for (let i in testimonials.track_counts) {
+        if (i != "all") {
+          testimonials.track_counts["all"] += testimonials.track_counts[i];
+        }
+      }
+
+      props.setTracks(tracks);
+      props.setTracksCount(testimonials.track_counts);
     }
 
     fetchData();
 
-  }, [props.currentPage, props.sortType]);
+  }, [props.currentPage, props.sortType, props.whichTrack]);
 
   return (
     <div className="testimonials flex flex-col relative min-h-[70vh]">
