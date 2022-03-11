@@ -18,13 +18,14 @@ export default function SortDropdown(props) {
       onMouseLeave={() => setDropDown(false)}
     >
 
-      <div className={`sort ${dropDown ? "rounded-t-[5px] hover:bg-[#d5e0f7]" : "rounded-[5px]"} flex bg-[#F0F3F9] justify-between`} onClick={() => props.setSelected(props.selected)}>
+      <div className={`sort ${dropDown ? "rounded-t-[5px] hover:bg-[#d5e0f7]" : "rounded-[5px]"} flex bg-[#F0F3F9] justify-between`}
+        onClick={() => props.setSelected(props.selected)}
+      >
         <p className="px-5 py-3 text-[#5C5589] font-poppins">{sortType[props.selected]}</p>
         {
           !dropDown && <img className="pr-5" src={dropdownBig} alt="" />
         }
       </div>
-
       {
         dropDown && <div className={`sort rounded-b-[5px] flex bg-[#F0F3F9] absolute z-10 justify-between w-full ${dropDown && "hover:bg-[#d5e0f7]"}`}
           onClick={() => props.setSelected((props.selected + 1) % 2)}>
@@ -33,7 +34,6 @@ export default function SortDropdown(props) {
 
         </div>
       }
-
     </div>
   );
 }
