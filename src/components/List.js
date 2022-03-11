@@ -4,11 +4,14 @@ import hexLogo from '../assets/hexLogo.svg';
 import dropdown from '../assets/dropdown.svg';
 import Testimonials from './Testimonials';
 import SortDropdown from './SortDropdown';
+import Pagination from './Pagination';
 
 export default function List() {
   const [currentPage, setCurrentPage] = useState(1);
+  const [dropDown, setDropDown] = useState(false);
   const [selected, setSelected] = useState(0);
   const [exercise, setExercise] = useState('');
+  const [pages, setPages] = useState(0);
   const sortType = {
     0: 'newest_first',
     1: 'oldest_first'
@@ -19,7 +22,7 @@ export default function List() {
   }
 
   return (
-    <div className="list min-h-[70vh] mb-11 mx-8 shadow-[0_4px_42px_0px_rgba(79,114,205,0.15)] rounded-lg">
+    <div className="list min-h-[70vh] mb-11 mx-8 shadow-[0_4px_42px_0px_rgba(79,114,205,0.15)] rounded-lg" >
       <div className="list_header flex justify-between m-4">
 
         <div className="list_headerRight flex items-center">
@@ -34,12 +37,13 @@ export default function List() {
           </div>
         </div>
 
-        <SortDropdown selected={selected} setSelected={setSelected} />
+        <SortDropdown selected={selected} setSelected={setSelected} dropDown={dropDown} setDropDown={setDropDown} />
 
       </div>
 
-      <hr className="bg-[#D5D8E4]" />
-      <Testimonials currentPage={currentPage} setCurrentPage={setCurrentPage} exercise={exercise} sortType={sortType[selected]} />
+      <hr className="bg-[#D5D8E4] h-[2px]" />
+      <Testimonials currentPage={currentPage} setCurrentPage={setCurrentPage} exercise={exercise} sortType={sortType[selected]} setPages={setPages} />
+      <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} pages={pages} />
 
     </div>
   );

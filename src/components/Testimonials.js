@@ -7,12 +7,11 @@ export default function Testimonials(props) {
 
   const [loading, setLoading] = useState(true);
   const [testimonials, setTestimonials] = useState([]);
-  console.log(props.sortType);
   const URL = `https://exercism.org/api/v2/hiring/testimonials?page=${props.currentPage}&order=${props.sortType}`;
 
   const spliceContent = (content) => {
     const contentArray = content.split(' ');
-    return contentArray.length <= 11 ? content : contentArray.slice(0, 11).join(' ') + ' ...';
+    return contentArray.length <= 12 ? content : contentArray.slice(0, 12).join(' ') + ' ...';
   }
 
   const handleDateTime = (dateTime) => {
@@ -47,9 +46,10 @@ export default function Testimonials(props) {
 
     async function fetchData() {
       setLoading(true);
-      const { data: { testimonials: { results } } } = await axios.get(URL);
-      setTestimonials([...results]);
+      const { data: { testimonials } } = await axios.get(URL);
+      setTestimonials(testimonials.results);
       setLoading(false);
+      props.setPages(testimonials.pagination.total_pages);
     }
 
     fetchData();
@@ -66,7 +66,6 @@ export default function Testimonials(props) {
       {
         testimonials.length != 0 && testimonials.map((item, idx) => {
           if (props.exercise == '' || props.exercise.toLowerCase() == item.exercise.title.toLowerCase()) {
-            console.log(idx);
             return (
               <div className="flex px-7 h-16 border-b border-[#EAECF3] hover:bg-[#F4F7FD]" key={idx}>
 
@@ -90,7 +89,7 @@ export default function Testimonials(props) {
 
                   <div className="testimonial_right flex items-center font-poppins text-sm">
                     {handleDateTime(item.created_at)}
-                    <img className="ml-12 text-[#5C5589] cursor-pointer" src={rightArrow} alt="" />
+                    <img className="ml-16 text-[#5C5589] cursor-pointer" src={rightArrow} alt="" />
                   </div>
                 </div>
               </div>
