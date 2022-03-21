@@ -22,19 +22,19 @@ export default function List(props) {
   }
 
   return (
-    <div className="list min-h-[70vh] mb-11 mx-8 rounded-lg shadow-[0_4px_42px_0px_rgba(79,114,205,0.15)]">
-      <div className="list_header flex justify-between m-4">
-        <div className="list_headerRight flex items-center">
+    <div className="list min-h-[70vh] mb-11 mx-4 sm:mx-8 rounded-lg shadow-[0_4px_42px_0px_rgba(79,114,205,0.15)]">
+      <div className="list_header md:flex md:justify-between m-4">
+        <div className="list_headerRight flex items-center mb-3 md:mb-0">
 
           <TrackDropdown tracks={tracks} tracksCount={props.tracksCount} whichTrack={whichTrack} setWhichTrack={setWhichTrack} />
 
-          <div className="search rounded-[5px] w-4/5 flex items-center 
+          <div className="search rounded-[5px] ml-4 mx-1 sm:mx-2 w-full sm:1/2 md:w-4/5 flex items-center 
             border border-white bg-[#F0F3F9] text-[#5C5589] font-poppins 
             hover:border hover:border-[#2E57E8] hover:shadow-[0_0px_2px_2px_rgba(46,87,232,0.25)]"
           >
-            <img className="ml-5 h-6" src={search} alt="" />
+            <img className="ml-2 sm:ml-5 h-6" src={search} alt="" />
             <input value={exercise} onChange={handleChange}
-              className="bg-[#F0F3F9] rounded-[5px] w-full mx-[21px] my-[12px] border-none 
+              className="bg-[#F0F3F9] rounded-[5px] w-full mx-2 sm:mx-5 my-3 border-none 
               outline-none placeholder:text-[#5C5589] focus:text-[#130B43]"
               type="text" placeholder='Filter by exercise title'
             />

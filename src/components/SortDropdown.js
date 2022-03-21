@@ -13,7 +13,7 @@ export default function SortDropdown(props) {
   }
 
   return (
-    <div className={`list_headerLeft cursor-pointer lg:w-1/4 xl:w-1/5 relative mr-2`}
+    <div className={`list_headerLeft cursor-pointer md:w-1/2 lg:w-1/4 xl:w-1/5 relative mx-1 sm:mx-2`}
       onClick={() => setDropDown(!dropDown)}
       onMouseLeave={() => setDropDown(false)}
     >

@@ -6,7 +6,10 @@ module.exports = {
     extend: {},
     fontFamily: {
       'poppins': ['Poppins', 'sans-serif'],
-    }
+    },
+    // screens: {
+    // 'mobile': '529px',
+    // },
   },
   plugins: [],
 }
