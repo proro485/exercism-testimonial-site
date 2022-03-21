@@ -60,22 +60,22 @@ export default function Pagination(props) {
   return (
     <>
       <hr className="bg-[#D5D8E4]" />
-      <div className="pagination flex justify-between mx-8 my-4">
+      <div className="pagination lg:flex lg:justify-between mx-8 my-4">
         <div className="previous">
-          <button className={`flex items-center px-4 py-2 rounded-md text-sm font-poppins
+          <button className={`block m-auto lg:flex lg:items-center px-4 py-2 rounded-md text-sm font-poppins
             ${handleDisablePrevious() ? "bg-[#E0E0ED] text-[#76709F]" : "border border-[#D5D8E4] text-[#5C5589] border-b-4 border-x-2"}`}
             onClick={handlePrevious}
           >
-            <img src={leftPointer} alt="" className="mr-3" />
+            <img src={leftPointer} alt="" className="mr-3 inline" />
             Previous
           </button>
         </div>
 
-        <div className="pagination_buttons flex items-center">
+        <div className="pagination_buttons flex items-center justify-center my-3 lg:my-0">
           {
             handlePagination().map((item, idx) => {
               return (
-                <button key={idx} className={`px-4 py-2 mr-3 text-sm font-poppins
+                <button key={idx} className={`px-2 sm:px-3 md:px-4 py-2 mx-1 sm:mr-3 text-sm font-poppins
                 ${item != "..." && "border rounded cursor-pointer"} 
                 ${item != props.currentPage ? "border-[#D5D8E4] text-[#5C5589]" : "border-[#76709F] text-[#130B43] bg-[#E1EBFF]"}`}
                   onClick={() => handlePageClick(item)}
@@ -88,12 +88,12 @@ export default function Pagination(props) {
         </div>
 
         <div className="next">
-          <button className={`flex items-center px-4 py-2 rounded-md text-sm font-poppins
+          <button className={`block m-auto md:flex md:items-center px-4 py-2 rounded-md text-sm font-poppins
             ${handleDisableNext() ? "bg-[#E0E0ED] text-[#76709F]" : "border border-[#D5D8E4] text-[#5C5589] border-b-4 border-x-2"}`}
             onClick={handleNext}
           >
             Next
-            <img src={rightPointer} alt="" className="ml-3" />
+            <img src={rightPointer} alt="" className="ml-3 inline" />
           </button>
         </div >
       </div >
