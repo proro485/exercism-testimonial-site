@@ -75,8 +75,8 @@ export default function Pagination(props) {
           {
             handlePagination().map((item, idx) => {
               return (
-                <button key={idx} className={`px-2 sm:px-3 md:px-4 py-2 mx-1 sm:mr-3 text-sm font-poppins
-                ${item != "..." && "border rounded cursor-pointer"} 
+                <button key={idx} className={`px-3 md:px-4 py-2 mx-1 sm:mr-3 text-sm font-poppins
+                ${item != "..." ? "border rounded cursor-pointer" : "px-[2px]"} 
                 ${item != props.currentPage ? "border-[#D5D8E4] text-[#5C5589]" : "border-[#76709F] text-[#130B43] bg-[#E1EBFF]"}`}
                   onClick={() => handlePageClick(item)}
                 >

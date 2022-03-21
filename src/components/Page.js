@@ -12,7 +12,7 @@ export default function Page() {
       <div className="testimonial_title mt-10 mb-9">
         <img className="mb-3 block m-auto" src={testimonial} alt="" />
         <div className="title flex justify-center font-poppins items-center">
-          <h2 className="text-center text-[#130B43] text-3xl font-bold">Testimonials I've left</h2>
+          <h2 className="text-center text-[#130B43] text-2xl sm:text-3xl font-bold">Testimonials I've left</h2>
           {
             tracksCount['all'] != undefined && <div className="total_testimonials ml-4 px-3 py-1 
               text-sm text-[#5C5589] rounded-[100px] border border-[#CBC9D9]"

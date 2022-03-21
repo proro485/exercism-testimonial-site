@@ -22,7 +22,7 @@ export default function List(props) {
   }
 
   return (
-    <div className="list min-h-[70vh] mb-11 mx-4 sm:mx-8 rounded-lg shadow-[0_4px_42px_0px_rgba(79,114,205,0.15)]">
+    <div className="list min-h-[70vh] mb-11 mx-4 sm:mx-8 rounded-lg shadow-[0_4px_42px_0px_rgba(79,114,205,0.3)]">
       <div className="list_header md:flex md:justify-between m-4">
         <div className="list_headerRight flex items-center mb-3 md:mb-0">
 
