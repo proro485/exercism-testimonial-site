@@ -24,9 +24,10 @@ export default function Explore() {
         cursor-pointer
         mr-2 sm:mr-4 
         px-4 py-2 
-        text-[#130B43] text-[15px] 
-        border border-[#130B43] 
-        rounded shadow-[0_4px_42px_0px_rgba(79,114,205,0.2)]
+        text-darkPurple text-[15px] 
+        border border-darkPurple 
+        rounded
+        shadow-medium
       "
         onClick={handleClick}
       >
@@ -34,7 +35,7 @@ export default function Explore() {
         <button className="font-poppins font-semibold ml-3">Explore</button>
       </div>
       {
-        dropDown && <div className="absolute mt-2 pb-4 right-11 sm:right-10 left-auto bg-white rounded shadow-[0_4px_42px_0px_rgba(79,114,205,0.2)] z-20">
+        dropDown && <div className="absolute mt-2 pb-4 right-11 sm:right-10 left-auto bg-white rounded shadow-medium z-20">
           <div className="flex flex-wrap items-center px-4 ">
             <div className="space-x-2 flex items-center">
               <a href="/chatBubble">
@@ -51,7 +52,7 @@ export default function Explore() {
               </a>
             </div>
           </div>
-          <hr className="h-px bg-[#130B43]" />
+          <hr className="h-[2px] border-none bg-lighterPurple" />
           <div className="mt-3">
             <NavbarButtonsExplore title="Dashboard" image={dashboard} selected={true} description="dashboard" />
             <NavbarButtonsExplore title="Tracks" image={tracks} selected={false} description="tracks" />

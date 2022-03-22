@@ -16,7 +16,7 @@ import Explore from './Explore';
 
 export default function Navbar() {
   return (
-    <nav className='nav h-16 flex  items-center border-[#C8D5EF] border-b w-full'>
+    <nav className='nav h-16 flex  items-center border-lighterPurple border-b w-full'>
       <div className="px-5 sm:px-10 flex items-center justify-between w-full">
 
         <div className="nav_left flex items-center">

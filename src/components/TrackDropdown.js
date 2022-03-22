@@ -39,7 +39,7 @@ export default function TrackDropdown(props) {
   }, []);
 
   return (
-    <div className="trackDropDown relative cursor-pointer font-poppins text-[#3D3B45]"
+    <div className="trackDropDown relative cursor-pointer font-poppins text-trackDropDownText"
       onClick={() => setDropDown(!dropDown)} onMouseLeave={() => setDropDown(false)}
     >
       <div className="flex" >
@@ -53,7 +53,7 @@ export default function TrackDropdown(props) {
           {
             Object.keys(props.tracks).map((track, idx) => {
               return (
-                <div className={`flex justify-between py-2 px-6 items-center ${props.whichTrack == props.tracks[track] && "bg-[#F0F3F9]"}`}
+                <div className={`flex justify-between py-2 px-6 items-center ${props.whichTrack == props.tracks[track] && "bg-faintPurple"}`}
                   key={idx} onClick={() => handleChangeTrack(props.tracks[track])}
                 >
                   <div className="flex items-center">
@@ -66,7 +66,7 @@ export default function TrackDropdown(props) {
                     </div>
                   </div>
                   <div className={`count text-sm px-3 py-[3px] border rounded-[100px]
-                   ${props.tracks[track] == props.whichTrack ? "border-[#6A6781] text-[#130B43]" : "border-[#A9A6BD] text-[#5C5589]"}`}
+                   ${props.tracks[track] == props.whichTrack ? "border-trackDropDownActiveBorder text-darkPurple" : "border-trackDropDownBorder text-lightPurple"}`}
                   >
                     {props.tracksCount[props.tracks[track]]}
                   </div>

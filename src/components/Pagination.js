@@ -53,17 +53,18 @@ export default function Pagination(props) {
 
   const handlePageClick = (page) => {
     if (page != "...") {
+      window.scrollTo(0, 0);
       props.setCurrentPage(parseInt(page));
     }
   }
 
   return (
     <>
-      <hr className="bg-[#D5D8E4]" />
+      <hr className="bg-purplePaginationBorder border-none h-px" />
       <div className="pagination lg:flex lg:justify-between mx-8 my-4">
         <div className="previous">
           <button className={`block m-auto lg:flex lg:items-center px-4 py-2 rounded-md text-sm font-poppins
-            ${handleDisablePrevious() ? "bg-[#E0E0ED] text-[#76709F]" : "border border-[#D5D8E4] text-[#5C5589] border-b-4 border-x-2"}`}
+            ${handleDisablePrevious() ? "bg-purplePaginationBg text-purplePaginationText" : "border border-purplePaginationBorder text-lightPurple border-b-4 border-x-2"}`}
             onClick={handlePrevious}
           >
             <img src={leftPointer} alt="" className="mr-3 inline" />
@@ -77,7 +78,7 @@ export default function Pagination(props) {
               return (
                 <button key={idx} className={`px-3 md:px-4 py-2 mx-1 sm:mr-3 text-sm font-poppins
                 ${item != "..." ? "border rounded cursor-pointer" : "px-[2px]"} 
-                ${item != props.currentPage ? "border-[#D5D8E4] text-[#5C5589]" : "border-[#76709F] text-[#130B43] bg-[#E1EBFF]"}`}
+                ${item != props.currentPage ? "border-purplePaginationBorder text-lightPurple" : "border-purplePaginationText text-darkPurple bg-purplePaginationBgActive"}`}
                   onClick={() => handlePageClick(item)}
                 >
                   {item}
@@ -89,7 +90,7 @@ export default function Pagination(props) {
 
         <div className="next">
           <button className={`block m-auto md:flex md:items-center px-4 py-2 rounded-md text-sm font-poppins
-            ${handleDisableNext() ? "bg-[#E0E0ED] text-[#76709F]" : "border border-[#D5D8E4] text-[#5C5589] border-b-4 border-x-2"}`}
+            ${handleDisableNext() ? "bg-purplePaginationBg text-purplePaginationText" : "border border-purplePaginationBorder text-lightPurple border-b-4 border-x-2"}`}
             onClick={handleNext}
           >
             Next
