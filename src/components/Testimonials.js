@@ -82,14 +82,14 @@ export default function Testimonials(props) {
   return (
     <div className="testimonials flex flex-col relative min-h-[70vh]">
       {
-        loading && <div className="absolute w-full h-full bg-[#FBFCFE]/95 flex justify-center items-center">
-          <img className="animate-spin h-14" src={loader} alt="" />
+        loading && <div className="absolute w-full h-full bg-[#FBFCFE]/95 flex justify-center">
+          <img className="animate-spin h-14 relative top-[25vh]" src={loader} alt="" />
         </div>
       }
       {
         testimonials.length != 0 && testimonials.map((item, idx) => {
           return (
-            <div className="flex items-center justify-between px-7 h-16 border-b border-[#EAECF3] hover:bg-[#F4F7FD]" key={idx}>
+            <div className="flex items-center justify-between px-7 min-h-[64px] py-2 border-b border-[#EAECF3] hover:bg-[#F4F7FD]" key={idx}>
 
               <div className="testimonial_left flex items-center w-1/2">
                 <div className="track h-8">
@@ -105,12 +105,12 @@ export default function Testimonials(props) {
               </div>
 
               <div className="testimonial_center flex justify-between w-fit md:w-full">
-                <div className="testimonial_center hidden md:flex md:flex-wrap w-2/3 xl:w-fit ml-2 items-center p-0 font-poppins text-left text-[15px] text-[#3F3A5A]">
+                <div className="testimonial_center hidden md:flex md:flex-wrap w-2/3 xl:w-fit ml-5 items-center font-poppins text-left text-[15px] text-[#3F3A5A]">
                   {spliceContent(item.content)}
                 </div>
                 <div className="testimonial_right flex items-center font-poppins text-sm">
                   <p className="ml-2 lg:ml-0">{handleDateTime(item.created_at)}</p>
-                  <img className="ml-5 sm:ml-16 text-[#5C5589] cursor-pointer" src={rightArrow} alt="" />
+                  <img className="ml-5 lg:ml-16 text-[#5C5589] cursor-pointer" src={rightArrow} alt="" />
                 </div>
               </div>
             </div>

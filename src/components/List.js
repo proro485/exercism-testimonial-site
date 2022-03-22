@@ -29,10 +29,10 @@ export default function List(props) {
           <TrackDropdown tracks={tracks} tracksCount={props.tracksCount} whichTrack={whichTrack} setWhichTrack={setWhichTrack} />
 
           <div className="search rounded-[5px] ml-4 mx-1 sm:mx-2 w-full sm:1/2 md:w-4/5 flex items-center 
-            border border-white bg-[#F0F3F9] text-[#5C5589] font-poppins 
+            border border-white bg-[#F0F3F9] text-[#5C5589] font-poppins text-sm sm:text-base
             hover:border hover:border-[#2E57E8] hover:shadow-[0_0px_2px_2px_rgba(46,87,232,0.25)]"
           >
-            <img className="ml-2 sm:ml-5 h-6" src={search} alt="" />
+            <img className="ml-3 sm:ml-5 h-5 sm:h-6" src={search} alt="" />
             <input value={exercise} onChange={handleChange}
               className="bg-[#F0F3F9] rounded-[5px] w-full mx-2 sm:mx-5 my-3 border-none 
               outline-none placeholder:text-[#5C5589] focus:text-[#130B43]"
