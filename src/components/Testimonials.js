@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 import rightArrow from '../assets/rightArrow.svg';
 import loader from '../assets/loader.svg';
 
@@ -41,6 +42,10 @@ export default function Testimonials(props) {
     }
   }
 
+  const handleExerciseTitle = (title) => {
+    return title.split(' ').join('_');
+  }
+
   useEffect(() => {
 
     async function fetchData() {
@@ -53,7 +58,6 @@ export default function Testimonials(props) {
         finalURL = finalURL + '&exercise=' + props.exercise;
       }
 
-      // const { data: { testimonials } } = await fetch(finalURL);
       const response = await fetch(finalURL);
       const { testimonials } = await response.json();
       setTestimonials(testimonials.results);
@@ -90,7 +94,7 @@ export default function Testimonials(props) {
       {
         testimonials.length != 0 && testimonials.map((item, idx) => {
           return (
-            <a href={`${item.mentor.handle}_${item.exercise.title}`} key={idx}>
+            <Link to={`/${item.mentor.handle}_${handleExerciseTitle(item.exercise.title)}`} key={idx}>
               <div className="flex items-center justify-between px-7 min-h-[64px] py-2 border-b border-testimonialPurpleBorder hover:bg-testimonialPurpleHoverBg">
 
                 <div className="testimonial_left flex items-center w-1/2">
@@ -116,7 +120,7 @@ export default function Testimonials(props) {
                   </div>
                 </div>
               </div>
-            </a>
+            </Link>
           );
         })
       }

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import NavbarButtonsExplore from './NavbarButtonsExplore';
 import dashboard from '../assets/dashboard.svg';
 import tracks from '../assets/tracks.svg';
@@ -38,18 +39,18 @@ export default function Explore() {
         dropDown && <div className="absolute mt-2 pb-4 right-11 sm:right-10 left-auto bg-white rounded shadow-medium z-20">
           <div className="flex flex-wrap items-center px-4 ">
             <div className="space-x-2 flex items-center">
-              <a href="/chatBubble">
+              <Link to="/chatBubble">
                 <img className="h-6 w-auto sm:h-7 ml-1 mr-3 cursor-pointer" src={chatBubble} alt="" />
-              </a>
-              <a href="/hexagon">
+              </Link>
+              <Link to="/hexagon">
                 <img className="h-6 w-auto sm:h-7 cursor-pointer" src={hexagon} alt="" />
-              </a>
-              <a href="/notifications">
+              </Link>
+              <Link to="/notifications">
                 <img className="h-12 w-auto sm:h-16 mt-[10px] sm:mt-[12px] cursor-pointer" src={notifications} alt="" />
-              </a>
-              <a href="/badge">
+              </Link>
+              <Link to="/badge">
                 <img className="h-8 sm:h-10 mb-[5px] sm:mb-[7px] cursor-pointer" src={badge} alt="" />
-              </a>
+              </Link>
             </div>
           </div>
           <hr className="h-[2px] border-none bg-lighterPurple" />

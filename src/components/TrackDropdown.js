@@ -40,15 +40,15 @@ export default function TrackDropdown(props) {
 
   return (
     <div className="trackDropDown relative cursor-pointer font-poppins text-trackDropDownText"
-      onClick={() => setDropDown(!dropDown)} onMouseLeave={() => setDropDown(false)}
+      onClick={() => setDropDown(!dropDown)}
     >
       <div className="flex" >
         <img className="ml-2 mr-3 h-12" src={logo === "all" ? hexLogo : `${logo}`} alt="" />
         <img className="mr-4 w-3" src={dropdown} alt="" />
       </div>
       {
-        dropDown && <div className="dropdown max-h-[32vh] w-[380px] overflow-x-visible overflow-y-auto 
-        bg-white absolute z-10 p-2 rounded-lg shadow-[0_4px_42px_0px_rgba(79,114,205,0.15)]"
+        dropDown && <div className="dropdown mt-2 max-h-[290px] w-[380px] overflow-x-visible overflow-y-auto 
+        bg-white absolute z-10 p-2 rounded-lg shadow-medium"
         >
           {
             Object.keys(props.tracks).map((track, idx) => {

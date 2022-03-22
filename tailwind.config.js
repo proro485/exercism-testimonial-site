@@ -43,5 +43,7 @@ module.exports = {
       blueish: "0px 0px 2px 2px rgba(46,87,232,0.25)"
     }
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar-hide'),
+  ],
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import dashboard from '../assets/dashboard.svg';
 import logo from '../assets/logo.svg';
 import smallLogo from '../assets/smallLogo.svg'
@@ -39,25 +40,25 @@ export default function Navbar() {
         <div className='flex items-center'>
           <Explore />
           <div className="hidden xl:flex xl:items-center">
-            <a href="/chatBubble" className="xl:mr-9">
+            <Link to="/chatBubble" className="xl:mr-9">
               <img className="h-6 cursor-pointer" src={chatBubble} alt="" />
-            </a>
-            <a href="/hexagon" className="xl:mr-6">
+            </Link>
+            <Link to="/hexagon" className="xl:mr-6">
               <img className="h-6 cursor-pointer" src={hexagon} alt="" />
-            </a>
-            <a href="/notifications" className="xl:mr-6">
+            </Link>
+            <Link to="/notifications" className="xl:mr-6">
               <img className="h-17 pt-[14px] cursor-pointer" src={notifications} alt="" />
-            </a>
-            <a href="/badge" className="xl:mr-10">
+            </Link>
+            <Link to="/badge" className="xl:mr-10">
               <img className="h-17 pb-[7px] cursor-pointer" src={badge} alt="" />
-            </a>
+            </Link>
           </div>
-          <a href="/avatar" className="mr-2 sm:mr-4">
+          <Link to="/avatar" className="mr-2 sm:mr-4">
             <img className="h-17 cursor-pointer" src={avatar} alt="" />
-          </a>
-          <a href="/menu" className="">
+          </Link>
+          <Link to="/menu" className="">
             <img className="h-17 cursor-pointer" src={menu} alt="" />
-          </a>
+          </Link>
         </div>
 
       </div>
