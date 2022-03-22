@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import hexLogo from '../assets/hexLogo.svg'
 import dropdown from '../assets/dropdown.svg'
-import axios from 'axios';
 
 export default function TrackDropdown(props) {
   const [dropDown, setDropDown] = useState(false);
@@ -24,7 +23,8 @@ export default function TrackDropdown(props) {
   useEffect(() => {
 
     async function fetchData() {
-      const { data: { tracks } } = await axios.get(URL);
+      const response = await fetch(URL);
+      const { tracks } = await response.json();
       const tracksList = {};
       for (let i = 0; i < tracks.length; i++) {
         tracksList[tracks[i].slug] = { title: tracks[i].title, icon: tracks[i].icon_url };

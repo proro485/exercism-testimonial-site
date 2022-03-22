@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import rightArrow from '../assets/rightArrow.svg';
 import loader from '../assets/loader.svg';
@@ -54,7 +53,10 @@ export default function Testimonials(props) {
         finalURL = finalURL + '&exercise=' + props.exercise;
       }
 
-      const { data: { testimonials } } = await axios.get(finalURL);
+      // const { data: { testimonials } } = await fetch(finalURL);
+      const response = await fetch(finalURL);
+      const { testimonials } = await response.json();
+      console.log(testimonials);
       setTestimonials(testimonials.results);
       setLoading(false);
       props.setPages(testimonials.pagination.total_pages);
@@ -89,31 +91,33 @@ export default function Testimonials(props) {
       {
         testimonials.length != 0 && testimonials.map((item, idx) => {
           return (
-            <div className="flex items-center justify-between px-7 min-h-[64px] py-2 border-b border-[#EAECF3] hover:bg-[#F4F7FD]" key={idx}>
+            <a href={`${item.mentor.handle}_${item.exercise.title}`}>
+              <div className="flex items-center justify-between px-7 min-h-[64px] py-2 border-b border-[#EAECF3] hover:bg-[#F4F7FD]" key={idx}>
 
-              <div className="testimonial_left flex items-center w-1/2">
-                <div className="track h-8">
-                  <img className="h-full" src={item.track.icon_url} alt="" />
+                <div className="testimonial_left flex items-center w-1/2">
+                  <div className="track h-8">
+                    <img className="h-full" src={item.track.icon_url} alt="" />
+                  </div>
+                  <div className="avatar h-10 ml-6">
+                    <img className="h-full rounded-full" src={item.mentor.avatar_url} alt="" />
+                  </div>
+                  <div className="details ml-5 font-poppins">
+                    <div className="handle hidden sm:flex font-medium text-sm sm:text-base text-[#130B43]">{item.mentor.handle}</div>
+                    <div className="handle hidden lg:flex font-poppins text-sm text-[#5C5589]">{`on ${item.exercise.title} in ${item.track.title}`}</div>
+                  </div>
                 </div>
-                <div className="avatar h-10 ml-6">
-                  <img className="h-full rounded-full" src={item.mentor.avatar_url} alt="" />
-                </div>
-                <div className="details ml-5 font-poppins">
-                  <div className="handle hidden sm:flex font-medium text-sm sm:text-base text-[#130B43]">{item.mentor.handle}</div>
-                  <div className="handle hidden lg:flex font-poppins text-sm text-[#5C5589]">{`on ${item.exercise.title} in ${item.track.title}`}</div>
+
+                <div className="testimonial_center flex justify-between w-fit md:w-full">
+                  <div className="testimonial_center hidden md:flex md:flex-wrap w-2/3 xl:w-fit ml-5 items-center font-poppins text-left text-[15px] text-[#3F3A5A]">
+                    {spliceContent(item.content)}
+                  </div>
+                  <div className="testimonial_right flex items-center font-poppins text-sm">
+                    <p className="ml-2 lg:ml-0">{handleDateTime(item.created_at)}</p>
+                    <img className="ml-5 lg:ml-16 text-[#5C5589] cursor-pointer" src={rightArrow} alt="" />
+                  </div>
                 </div>
               </div>
-
-              <div className="testimonial_center flex justify-between w-fit md:w-full">
-                <div className="testimonial_center hidden md:flex md:flex-wrap w-2/3 xl:w-fit ml-5 items-center font-poppins text-left text-[15px] text-[#3F3A5A]">
-                  {spliceContent(item.content)}
-                </div>
-                <div className="testimonial_right flex items-center font-poppins text-sm">
-                  <p className="ml-2 lg:ml-0">{handleDateTime(item.created_at)}</p>
-                  <img className="ml-5 lg:ml-16 text-[#5C5589] cursor-pointer" src={rightArrow} alt="" />
-                </div>
-              </div>
-            </div>
+            </a>
           );
         })
       }
