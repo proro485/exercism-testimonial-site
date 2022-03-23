@@ -88,12 +88,12 @@ export default function Pagination(props) {
           </button>
         </div>
 
-        <div className="pagination_buttons flex items-center justify-center my-3 lg:my-0">
+        <div className="pagination_buttons flex items-center justify-center sm:space-x-3 my-3 lg:my-0">
           {
             handlePagination().map((item, idx) => {
               return (
                 item !== "..." ?
-                  <button key={idx} className={`px-3 md:px-4 py-2 mx-1 sm:mr-3 text-sm font-medium font-poppins border rounded cursor-pointer hover:bg-purplePaginationBgActive focus:bg-purplePaginationBgActive hover:text-darkPurple focus:text-darkPurple
+                  <button key={idx} className={`px-3 md:px-4 py-2 mx-1 sm:mx-0 text-sm font-medium font-poppins border rounded cursor-pointer hover:bg-purplePaginationBgActive focus:bg-purplePaginationBgActive hover:text-darkPurple focus:text-darkPurple
                     ${item != props.currentPage ? "border-purplePaginationBorder text-lightPurple" : "border-purplePaginationText text-darkPurple bg-purplePaginationBgActive"}`}
                     onClick={() => handlePageClick(item)}
                   >
