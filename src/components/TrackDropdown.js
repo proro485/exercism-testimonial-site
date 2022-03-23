@@ -53,7 +53,7 @@ export default function TrackDropdown(props) {
           {
             Object.keys(props.tracks).map((track, idx) => {
               return (
-                <button className={`flex w-full justify-between py-2 px-5 sm:px-6 items-center ${props.whichTrack == props.tracks[track] && "bg-faintPurple"} hover:bg-faintPurple`}
+                <button className={`flex w-full justify-between py-2 px-5 sm:px-6 items-center ${props.whichTrack == props.tracks[track] && "bg-faintPurple"} hover:bg-faintPurple focus:bg-faintPurple`}
                   key={idx} onClick={() => handleChangeTrack(props.tracks[track])}
                 >
                   <div className="flex items-center">
