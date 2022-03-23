@@ -8,6 +8,10 @@ module.exports = {
       'poppins': ['Poppins', 'sans-serif'],
     },
     colors: {
+      inherit: "inherit",
+
+      transparent: "transparent",
+
       white: "#FFFFFF",
       overlayWhite: "#FBFCFE",
 

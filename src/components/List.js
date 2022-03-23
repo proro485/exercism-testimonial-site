@@ -28,14 +28,15 @@ export default function List(props) {
 
           <TrackDropdown tracks={tracks} tracksCount={props.tracksCount} whichTrack={whichTrack} setWhichTrack={setWhichTrack} />
 
-          <div className="search rounded-[5px] ml-4 mx-1 sm:mx-2 w-full sm:1/2 md:w-4/5 flex items-center 
+          <div className="search rounded-[5px] ml-4 mx-1 sm:mx-2 py-3 w-full sm:1/2 md:w-4/5 flex items-center 
             border border-white bg-faintPurple text-lightPurple font-poppins text-sm sm:text-base
-            active:border active:border-blue active:shadow-blueish"
+           active:border-blue active:shadow-blueish active:text-darkPurple active:bg-white hover:border-blue hover:shadow-blueish hover:text-darkPurple hover:bg-white focus-within:border-blue focus-within:shadow-blueish focus-within:text-darkPurple focus-within:bg-white"
           >
             <img className="ml-3 sm:ml-5 h-5 sm:h-6" src={search} alt="" />
             <input value={exercise} onChange={handleChange}
-              className="bg-faintPurple rounded-[5px] w-full mx-2 sm:mx-5 my-3 border-none 
-              outline-none placeholder:text-lightPurple focus:placeholder:text-darkPurple focus:text-darkPurple"
+              className=" bg-inherit placeholder:text-inherit rounded-[5px] w-full mx-2 sm:mx-5 text-sm sm:text-base
+              border-none outline-none
+              placeholder:text-lightPurple focus:placeholder:text-darkPurple focus:text-darkPurple hover:placeholder:text-darkPurple hover:text-darkPurple hover:bg-white"
               type="text" placeholder='Filter by exercise title'
             />
           </div>
