@@ -39,29 +39,29 @@ export default function TrackDropdown(props) {
   }, []);
 
   return (
-    <div className="trackDropDown relative cursor-pointer font-poppins text-trackDropDownText"
+    <button className="trackDropDown relative cursor-pointer font-poppins text-trackDropDownText"
       onClick={() => setDropDown(!dropDown)}
     >
       <div className="flex" >
-        <img className="ml-2 mr-3 h-12" src={logo === "all" ? hexLogo : `${logo}`} alt="" />
+        <img className="ml-2 mr-2 sm:mr-3 h-12" src={logo === "all" ? hexLogo : `${logo}`} alt="" />
         <img className="mr-4 w-3" src={dropdown} alt="" />
       </div>
       {
-        dropDown && <div className="dropdown mt-2 max-h-[290px] w-[380px] overflow-x-visible overflow-y-auto 
+        dropDown && <div className="dropdown mt-2 max-h-[290px] w-[300px] sm:w-[380px] overflow-x-visible overflow-y-auto scrollbar-hide
         bg-white absolute z-10 p-2 rounded-lg shadow-medium"
         >
           {
             Object.keys(props.tracks).map((track, idx) => {
               return (
-                <div className={`flex justify-between py-2 px-6 items-center ${props.whichTrack == props.tracks[track] && "bg-faintPurple"}`}
+                <button className={`flex w-full justify-between py-2 px-5 sm:px-6 items-center ${props.whichTrack == props.tracks[track] && "bg-faintPurple"} hover:bg-faintPurple`}
                   key={idx} onClick={() => handleChangeTrack(props.tracks[track])}
                 >
                   <div className="flex items-center">
-                    <input type="radio" className="mr-6 cursor-pointer" checked={props.tracks[track] == props.whichTrack}
+                    <input type="radio" className="mr-5 sm:mr-6 appearance-none w-4 h-4 sm:w-5 sm:h-5 bg-white border rounded-full border-lightPurple bg-clip-content p-1 checked:bg-testimonialPurpleContent checked:border-lightPurple" checked={props.tracks[track] == props.whichTrack}
                       onChange={() => { }}
                     />
                     <img className="mr-4 h-10" src={track != 0 ? `${allTracks[props.tracks[track]].icon}` : hexLogo} alt="" />
-                    <div className="title">
+                    <div className="title text-sm sm:text-base">
                       {allTracks[props.tracks[track]].title}
                     </div>
                   </div>
@@ -70,12 +70,12 @@ export default function TrackDropdown(props) {
                   >
                     {props.tracksCount[props.tracks[track]]}
                   </div>
-                </div>
+                </button>
               );
             })
           }
         </div>
       }
-    </div >
+    </button>
   );
 }
