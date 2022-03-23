@@ -28,7 +28,8 @@ export default function Explore() {
         text-darkPurple text-[15px] 
         border border-darkPurple 
         rounded
-        shadow-medium
+        shadow-light
+        hover:shadow-dark
       "
         onClick={handleClick}
       >
