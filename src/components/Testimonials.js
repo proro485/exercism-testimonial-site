@@ -101,7 +101,7 @@ export default function Testimonials(props) {
                   <div className="track h-8">
                     <img className="h-full" src={item.track.icon_url} alt="" />
                   </div>
-                  <div className="avatar h-10 ml-6">
+                  <div className="avatar h-[42px] ml-6">
                     <img className="h-full rounded-full" src={item.mentor.avatar_url} alt="" />
                   </div>
                   <div className="details ml-5 font-poppins">
@@ -114,9 +114,9 @@ export default function Testimonials(props) {
                   <div className="testimonial_center hidden md:flex md:flex-wrap w-2/3 xl:w-fit ml-5 items-center font-poppins text-left text-[15px] text-testimonialPurpleContent">
                     {spliceContent(item.content)}
                   </div>
-                  <div className="testimonial_right flex items-center font-poppins text-sm">
-                    <p className="ml-2 lg:ml-0">{handleDateTime(item.created_at)}</p>
-                    <img className="ml-5 lg:ml-16 text-lightPurple cursor-pointer" src={rightArrow} alt="" />
+                  <div className="testimonial_right text-lightPurple flex items-center font-poppins text-sm">
+                    <p className="ml-2 lg:ml-0 font-medium">{handleDateTime(item.created_at)}</p>
+                    <img className="ml-5 lg:ml-16 cursor-pointer" src={rightArrow} alt="" />
                   </div>
                 </div>
               </div>
