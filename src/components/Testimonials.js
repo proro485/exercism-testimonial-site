@@ -94,7 +94,7 @@ export default function Testimonials(props) {
       {
         testimonials.length != 0 && testimonials.map((item, idx) => {
           return (
-            <Link to={`/${item.mentor.handle}_${handleExerciseTitle(item.exercise.title)}`} key={idx}>
+            <Link to={`/${item.mentor.handle}_${handleExerciseTitle(item.exercise.title)}`} key={idx} className="focus:bg-testimonialPurpleHoverBg">
               <div className="flex items-center justify-between px-7 min-h-[64px] py-2 border-b border-testimonialPurpleBorder hover:bg-testimonialPurpleHoverBg">
 
                 <div className="testimonial_left flex items-center w-1/2">
