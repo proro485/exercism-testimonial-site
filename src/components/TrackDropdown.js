@@ -39,13 +39,13 @@ export default function TrackDropdown(props) {
   }, []);
 
   return (
-    <button className="trackDropDown relative cursor-pointer font-poppins text-trackDropDownText"
+    <div className="trackDropDown relative cursor-pointer font-poppins text-trackDropDownText"
       onClick={() => setDropDown(!dropDown)}
     >
-      <div className="flex" >
+      <button className="flex items-center" >
         <img className="ml-2 mr-2 sm:mr-3 h-12" src={logo === "all" ? hexLogo : `${logo}`} alt="" />
         <img className="mr-4 w-3" src={dropdown} alt="" />
-      </div>
+      </button>
       {
         dropDown && <div className="dropdown mt-2 max-h-[290px] w-[300px] sm:w-[380px] overflow-x-visible overflow-y-auto scrollbar-hide
         bg-white absolute z-10 p-2 rounded-lg shadow-medium"
@@ -76,6 +76,6 @@ export default function TrackDropdown(props) {
           }
         </div>
       }
-    </button>
+    </div>
   );
 }
