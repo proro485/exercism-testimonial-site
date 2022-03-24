@@ -21,41 +21,80 @@ export default function Explore() {
   return (
     <div>
       <div className="
-        flex xl:hidden items-center 
-        cursor-pointer
-        mr-2 sm:mr-4 
-        px-4 py-2 
-        text-darkPurple text-[15px] 
-        border border-darkPurple 
         rounded
-        shadow-light
-        hover:shadow-dark
-      "
-        onClick={handleClick}
+        px-4 py-2 
+        mr-2 sm:mr-4 
+        cursor-pointer
+        text-darkPurple text-[15px]
+        border border-darkPurple 
+        flex xl:hidden items-center 
+        shadow-light hover:shadow-dark" onClick={handleClick}
       >
         <img src={hamburger} alt="" />
-        <button className="font-poppins font-semibold ml-3">Explore</button>
+        <button className="
+          ml-3
+          font-poppins font-semibold"
+        >
+          Explore
+        </button>
+
       </div>
       {
-        dropDown && <div className="absolute mt-2 pb-4 right-11 sm:right-10 left-auto bg-white rounded shadow-medium z-20">
-          <div className="flex flex-wrap items-center px-4 ">
-            <div className="space-x-2 flex items-center">
+        dropDown && <div className="
+          absolute right-11 sm:right-10 left-auto
+          pb-4
+          mt-2   
+          bg-white 
+          rounded 
+          shadow-medium 
+          z-20"
+        >
+          <div className="
+            px-4 
+            flex flex-wrap items-center"
+          >
+            <div className="
+              space-x-2
+              flex items-center"
+            >
               <Link to="/chatBubble">
-                <img className="h-6 w-auto sm:h-7 ml-1 mr-3 cursor-pointer" src={chatBubble} alt="" />
+                <img className="
+                  h-6 sm:h-7 w-auto
+                  ml-1 mr-3
+                  cursor-pointer" src={chatBubble} alt="Chat Icon"
+                />
               </Link>
               <Link to="/hexagon">
-                <img className="h-6 w-auto sm:h-7 cursor-pointer" src={hexagon} alt="" />
+                <img className="
+                  h-6 sm:h-7
+                  w-auto 
+                  cursor-pointer" src={hexagon} alt="Hexagon Icon"
+                />
               </Link>
               <Link to="/notifications">
-                <img className="h-12 w-auto sm:h-16 mt-[10px] sm:mt-[12px] cursor-pointer" src={notifications} alt="" />
+                <img className="
+                  h-12 sm:h-16 w-auto
+                  mt-2 sm:mt-3
+                  cursor-pointer" src={notifications} alt="Notifications Icon"
+                />
               </Link>
               <Link to="/badge">
-                <img className="h-8 sm:h-10 mb-[5px] sm:mb-[7px] cursor-pointer" src={badge} alt="" />
+                <img className="
+                  h-8 sm:h-10
+                  mb-1 sm:mb-2
+                  cursor-pointer" src={badge} alt="Badge Icon"
+                />
               </Link>
             </div>
           </div>
-          <hr className="h-[2px] border-none bg-lighterPurple" />
-          <div className="mt-3">
+          <hr className="
+            h-[2px]
+            border-none 
+            bg-lighterPurple"
+          />
+          <div className="
+            mt-3"
+          >
             <NavbarButtonsExplore title="Dashboard" image={dashboard} selected={true} description="dashboard" />
             <NavbarButtonsExplore title="Tracks" image={tracks} selected={false} description="tracks" />
             <NavbarButtonsExplore title="Mentoring" image={mentoring} selected={false} description="mentoring" />

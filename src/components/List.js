@@ -22,31 +22,56 @@ export default function List(props) {
   }
 
   return (
-    <div className="list min-h-[70vh] mb-11 mx-4 sm:mx-8 rounded-lg shadow-darker">
-      <div className="list_header md:flex md:justify-between m-4">
-        <div className="list_headerRight flex items-center mb-3 md:mb-0">
-
-          <TrackDropdown tracks={tracks} tracksCount={props.tracksCount} setTracksCount={props.setTracksCount} whichTrack={whichTrack} setWhichTrack={setWhichTrack} />
-
-          <div className="search rounded-[5px] ml-4 mx-1 sm:mx-2 w-full sm:1/2 md:w-4/5 flex items-center 
-            border border-white bg-faintPurple text-lightPurple font-poppins text-sm sm:text-base
-           active:border-blue active:shadow-blueish active:text-darkPurple active:bg-yetAnotherFaintPurple hover:border-blue hover:shadow-blueish hover:text-darkPurple focus-within:border-blue focus-within:shadow-blueish focus-within:text-darkPurple focus-within:bg-white"
+    <div className="
+      min-h-[70vh]
+      mb-11 mx-4 sm:mx-8
+      rounded-lg
+      shadow-darker"
+    >
+      <div className="
+        m-4
+        md:flex md:justify-between"
+      >
+        <div className="
+          mb-3 md:mb-0
+          flex items-center"
+        >
+          <TrackDropdown tracks={tracks} tracksCount={props.tracksCount} whichTrack={whichTrack} setWhichTrack={setWhichTrack} />
+          <div className="
+            ml-4 mx-1 sm:mx-2
+            w-full md:w-4/5
+            flex items-center
+            rounded-[5px] 
+            font-poppins
+            text-sm sm:text-base
+            text-lightPurple hover:text-darkPurple active:text-darkPurple focus-within:text-darkPurple
+            border border-white  hover:border-blue active:border-blue focus-within:border-blue
+            bg-faintPurple active:bg-yetAnotherFaintPurple focus-within:bg-white 
+            hover:shadow-blueish active:shadow-blueish focus-within:shadow-blueish"
           >
-            <img className="ml-3 sm:ml-5 h-5 sm:h-6" src={search} alt="" />
-            <input value={exercise} onChange={handleChange}
-              className=" bg-inherit placeholder:text-inherit py-3 rounded-[5px] w-full mx-2 sm:mx-5 text-sm sm:text-base
-              border-none outline-none
-              placeholder:text-lightPurple active:bg-inherit focus:placeholder:text-darkPurple focus:text-darkPurple hover:placeholder:text-darkPurple hover:text-darkPurple hover:bg-inherit"
-              type="text" placeholder='Filter by exercise title'
+            <img className="
+              ml-3 sm:ml-5
+              h-5 sm:h-6" src={search} alt=""
+            />
+            <input className="
+              py-3
+              mx-2 sm:mx-5
+              bg-inherit
+              w-full 
+              rounded-[5px]
+              text-sm sm:text-base
+              text-inherit placeholder:text-inherit
+              border-none outline-none" value={exercise} onChange={handleChange} type="text" placeholder='Filter by exercise title'
             />
           </div>
         </div>
-
         <SortDropdown selected={selected} setSelected={setSelected} />
-
       </div>
-
-      <hr className="bg-purplePaginationBorder h-[2px] border-none" />
+      <hr className="
+        h-[2px]
+      bg-purplePaginationBorder
+        border-none"
+      />
       <Testimonials currentPage={currentPage} setCurrentPage={setCurrentPage}
         exercise={exercise}
         sortType={sortType[selected]}
@@ -55,7 +80,6 @@ export default function List(props) {
         whichTrack={whichTrack}
       />
       <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} pages={pages} />
-
     </div>
   );
 }

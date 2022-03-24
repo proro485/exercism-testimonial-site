@@ -75,26 +75,60 @@ export default function Pagination(props) {
   }
 
   return (
-    <>
-      <hr className="bg-purplePaginationBorder border-none h-px" />
-      <div className="pagination lg:flex lg:justify-between mx-8 my-4">
-        <div className="previous">
-          <button disabled={handleDisablePrevious()} className={`block m-auto lg:flex lg:items-center px-4 py-2 rounded-md text-sm font-poppins font-medium 
-            ${handleDisablePrevious() ? "bg-purplePaginationBg text-purplePaginationText" : "border border-purplePaginationBorder text-lightPurple border-b-4 border-x-2 hover:bg-faintPurple focus:bg-faintPurple active:bg-yetAnotherFaintPurple active:text-darkPurple"}`}
-            onClick={handlePrevious}
+    <div className="font-poppins">
+      <hr className="
+        h-px
+      bg-purplePaginationBorder
+        border-none"
+      />
+      <div className="
+        mx-8 my-4
+        lg:flex lg:justify-between"
+      >
+        <div>
+          <button className={`
+            px-4 py-2
+            m-auto
+            block lg:flex lg:items-center
+            rounded-md 
+            text-sm font-medium 
+            ${handleDisablePrevious() ?
+              "bg-purplePaginationBg text-purplePaginationText" :
+              `border border-b-4 border-x-2 border-purplePaginationBorder 
+              text-lightPurple active:text-darkPurple
+              hover:bg-faintPurple focus:bg-faintPurple active:bg-yetAnotherFaintPurple`
+            }`
+          }
+            onClick={handlePrevious} disabled={handleDisablePrevious()}
           >
             <img src={leftPointer} alt="" className="mr-3 inline" />
             Previous
           </button>
         </div>
 
-        <div className="pagination_buttons flex items-center justify-center sm:space-x-3 my-3 lg:my-0">
+        <div className="
+          sm:space-x-3
+          my-3 lg:my-0
+          flex items-center justify-center"
+        >
           {
             handlePagination().map((item, idx) => {
               return (
                 item !== "..." ?
-                  <button key={idx} className={`px-3 md:px-4 py-2 mx-1 sm:mx-0 text-sm font-medium font-poppins border rounded cursor-pointer hover:bg-purplePaginationBgActive focus:bg-purplePaginationBgActive hover:text-darkPurple focus:text-darkPurple
-                    ${item != props.currentPage ? "border-purplePaginationBorder text-lightPurple" : "border-purplePaginationText text-darkPurple bg-purplePaginationBgActive"}`}
+                  <button key={idx} className={`
+                    px-3 md:px-4 py-2
+                    mx-1 sm:mx-0
+                    text-sm font-medium
+                    border
+                    rounded
+                    cursor-pointer
+                    hover:bg-purplePaginationBgActive focus:bg-purplePaginationBgActive
+                    hover:text-darkPurple focus:text-darkPurple
+                    ${item != props.currentPage ?
+                      "border-purplePaginationBorder text-lightPurple" :
+                      "border-purplePaginationText text-darkPurple bg-purplePaginationBgActive"
+                    }`
+                  }
                     onClick={() => handlePageClick(item)}
                   >
                     {item}
@@ -105,17 +139,28 @@ export default function Pagination(props) {
           }
         </div>
 
-        <div className="next">
-          <button disabled={handleDisableNext()} className={`block m-auto md:flex md:items-center px-4 py-2 rounded-md text-sm font-poppins font-medium
-            ${handleDisableNext() ? "bg-purplePaginationBg text-purplePaginationText" : "border border-purplePaginationBorder text-lightPurple border-b-4 border-x-2 hover:bg-faintPurple focus:bg-faintPurple active:bg-yetAnotherFaintPurple active:text-darkPurple"}`}
-            onClick={handleNext}
+        <div>
+          <button className={`
+            px-4 py-2
+            m-auto
+            block lg:flex lg:items-center
+            rounded-md 
+            text-sm font-medium 
+            ${handleDisableNext() ?
+              "bg-purplePaginationBg text-purplePaginationText" :
+              `border border-b-4 border-x-2 border-purplePaginationBorder 
+              text-lightPurple active:text-darkPurple
+              hover:bg-faintPurple focus:bg-faintPurple active:bg-yetAnotherFaintPurple`
+            }`
+          }
+            onClick={handleNext} disabled={handleDisableNext()}
           >
             Next
             <img src={rightPointer} alt="" className="ml-3 inline" />
           </button>
         </div >
       </div >
-    </>
+    </div>
 
   );
 }

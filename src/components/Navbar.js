@@ -17,16 +17,24 @@ import Explore from './Explore';
 
 export default function Navbar() {
   return (
-    <nav className='nav h-16 flex  items-center border-lighterPurple border-b w-full'>
-      <div className="px-5 sm:px-10 flex items-center justify-between w-full">
-
-        <div className="nav_left flex items-center">
-          <div className='hidden md:flex' >
+    <nav className="
+      h-16
+      w-full
+      flex items-center 
+      border-b border-lighterPurple"
+    >
+      <div className="
+        px-5 sm:px-10
+        flex items-center justify-between
+        w-full"
+      >
+        <div className="flex items-center">
+          <div className="hidden md:flex">
             <a href="https://exercism.org">
               <img src={logo} alt="exercism logo" />
             </a>
           </div>
-          <div className='md:hidden'>
+          <div className="md:hidden">
             <a href="https://exercism.org">
               <img src={smallLogo} alt="exercism logo" className='h-8' />
             </a>
@@ -37,30 +45,46 @@ export default function Navbar() {
           <NavbarButtons title="Contribute" image={contribute} selected={false} description="contribute" />
         </div>
 
-        <div className='flex items-center'>
+        <div className="flex items-center">
           <Explore />
+
           <div className="hidden xl:flex xl:items-center">
             <Link to="/chatBubble" className="xl:mr-9">
-              <img className="h-6 cursor-pointer" src={chatBubble} alt="" />
+              <img className="
+                h-6
+                cursor-pointer" src={chatBubble} alt="Chat Icon" />
             </Link>
             <Link to="/hexagon" className="xl:mr-6">
-              <img className="h-6 cursor-pointer" src={hexagon} alt="" />
+              <img className="
+                h-6
+                cursor-pointer" src={hexagon} alt="Hexagon Icon" />
             </Link>
             <Link to="/notifications" className="xl:mr-6">
-              <img className="h-17 pt-[14px] cursor-pointer" src={notifications} alt="" />
+              <img className="
+                h-17
+                pt-[14px]
+                cursor-pointer" src={notifications} alt="Notifications Icon" />
             </Link>
             <Link to="/badge" className="xl:mr-10">
-              <img className="h-17 pb-[7px] cursor-pointer" src={badge} alt="" />
+              <img className="
+                h-17
+                pb-[7px]
+                cursor-pointer" src={badge} alt="Badge Icon" />
             </Link>
           </div>
+
           <Link to="/avatar" className="mr-2 sm:mr-4">
-            <img className="h-17 cursor-pointer" src={avatar} alt="" />
+            <img className="
+            h-17
+            cursor-pointer" src={avatar} alt="Avatar Icon" />
           </Link>
           <Link to="/menu" className="">
-            <img className="h-17 cursor-pointer" src={menu} alt="" />
+            <img className="
+              h-17
+              cursor-pointer" src={menu} alt="Menu Icon" />
           </Link>
-        </div>
 
+        </div>
       </div>
     </nav>
   );

@@ -13,24 +13,52 @@ export default function SortDropdown(props) {
   }
 
   return (
-    <div className={`list_headerLeft cursor-pointer md:w-1/2 lg:w-1/4 xl:w-1/5 relative mx-1 sm:mx-2 text-sm sm:text-base`}
-      onClick={() => setDropDown(!dropDown)}
+    <div className="
+      mx-1 sm:mx-2
+      relative
+      md:w-1/2 lg:w-1/4 xl:w-1/5
+      font-poppins
+      text-sm sm:text-base
+      cursor-pointer" onClick={() => setDropDown(!dropDown)}
     >
-
-      <button className={`hover:bg-purplePaginationBgActive w-full flex items-center ${dropDown ? "rounded-t-[5px] hover:bg-yetAnotherFaintPurple" : "rounded-[5px]"} flex bg-faintPurple justify-between`}
-        onClick={() => props.setSelected(props.selected)}
+      <button className={`
+      hover:bg-purplePaginationBgActive
+        w-full
+        flex items-center justify-between
+      bg-faintPurple
+        ${dropDown ?
+          "rounded-t-[5px] hover:bg-yetAnotherFaintPurple" :
+          "rounded-[5px]"
+        }`
+      } onClick={() => props.setSelected(props.selected)}
       >
-        <div className="px-5 py-3 text-lightPurple font-poppins">{sortType[props.selected]}</div>
+        <div className="
+          px-5 py-3 
+          text-lightPurple"
+        >
+          {sortType[props.selected]}
+        </div>
         {
           !dropDown && <img className="pr-5" src={dropdownBig} alt="" />
         }
       </button>
       {
-        dropDown && <button className={`sort rounded-b-[5px] flex bg-faintPurple absolute z-10 justify-between w-full ${dropDown && "hover:bg-yetAnotherFaintPurple"}`}
-          onClick={() => props.setSelected((props.selected + 1) % 2)}>
-
-          <div className="px-5 py-3 text-lightPurple font-poppins">{sortType[(props.selected + 1) % 2]}</div>
-
+        dropDown && <button className={`
+          absolute 
+          flex justify-between
+          w-full 
+          rounded-b-[5px]
+          bg-faintPurple
+          z-10 
+          ${dropDown && "hover:bg-yetAnotherFaintPurple"}`
+        } onClick={() => props.setSelected((props.selected + 1) % 2)}
+        >
+          <div className="
+            px-5 py-3 
+            text-lightPurple"
+          >
+            {sortType[(props.selected + 1) % 2]}
+          </div>
         </button>
       }
     </div>

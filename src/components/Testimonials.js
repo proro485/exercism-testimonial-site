@@ -85,38 +85,91 @@ export default function Testimonials(props) {
   }, [props.currentPage, props.sortType, props.whichTrack, props.exercise]);
 
   return (
-    <div className="testimonials flex flex-col relative min-h-[70vh]">
+    <div className="
+      flex flex-col
+      relative 
+      min-h-[70vh]
+      font-poppins"
+    >
       {
-        loading && <div className="absolute w-full h-full bg-overlayWhite/95 flex justify-center">
-          <img className="animate-spin h-14 relative top-[25vh]" src={loader} alt="" />
+        loading && <div className="
+          absolute 
+          w-full h-full 
+          bg-overlayWhite/95
+          flex justify-center"
+        >
+          <img className="
+            animate-spin
+            h-14
+            relative top-[25vh]" src={loader} alt=""
+          />
         </div>
       }
       {
         testimonials.length != 0 && testimonials.map((item, idx) => {
           return (
-            <Link to={`/${item.mentor.handle}_${handleExerciseTitle(item.exercise.title)}`} key={idx} className="focus:bg-testimonialPurpleHoverBg">
-              <div className="flex items-center justify-between px-7 min-h-[64px] py-2 border-b border-testimonialPurpleBorder hover:bg-testimonialPurpleHoverBg">
-
-                <div className="testimonial_left flex items-center w-1/2">
-                  <div className="track h-8">
+            <Link className="focus:bg-testimonialPurpleHoverBg"
+              to={`/${item.mentor.handle}_${handleExerciseTitle(item.exercise.title)}`} key={idx}
+            >
+              <div className="
+                px-7 py-2
+                flex items-center justify-between
+                min-h-[64px] 
+              hover:bg-testimonialPurpleHoverBg
+                border-b border-testimonialPurpleBorder"
+              >
+                <div className="
+                  w-1/2
+                  flex items-center"
+                >
+                  <div className="h-8">
                     <img className="h-full" src={item.track.icon_url} alt="" />
                   </div>
-                  <div className="avatar h-[42px] ml-6">
+                  <div className="h-[42px] ml-6">
                     <img className="h-full rounded-full" src={item.mentor.avatar_url} alt="" />
                   </div>
-                  <div className="details ml-5 font-poppins">
-                    <div className="handle hidden sm:flex font-medium text-sm sm:text-base text-darkPurple">{item.mentor.handle}</div>
-                    <div className="handle hidden lg:flex font-poppins text-sm text-lightPurple">{`on ${item.exercise.title} in ${item.track.title}`}</div>
+                  <div className="details ml-5 ">
+                    <div className="
+                      hidden sm:flex
+                      font-medium text-sm sm:text-base text-darkPurple"
+                    >
+                      {item.mentor.handle}
+                    </div>
+                    <div className="
+                      hidden lg:flex 
+                      text-sm text-lightPurple"
+                    >
+                      {`on ${item.exercise.title} in ${item.track.title}`}
+                    </div>
                   </div>
                 </div>
 
-                <div className="testimonial_center flex justify-between w-fit md:w-full">
-                  <div className="testimonial_center hidden md:flex md:flex-wrap w-2/3 xl:w-fit ml-5 items-center font-poppins text-left text-[15px] text-testimonialPurpleContent">
+                <div className="
+                  flex justify-between
+                  w-fit md:w-full"
+                >
+                  <div className="
+                    ml-5
+                    hidden md:flex md:flex-wrap items-center
+                    w-2/3 xl:w-fit 
+                    text-left text-[15px] text-testimonialPurpleContent"
+                  >
                     {spliceContent(item.content)}
                   </div>
-                  <div className="testimonial_right text-lightPurple flex items-center font-poppins text-sm">
-                    <p className="ml-2 lg:ml-0 font-medium">{handleDateTime(item.created_at)}</p>
-                    <img className="ml-5 lg:ml-16 cursor-pointer" src={rightArrow} alt="" />
+                  <div className="
+                    flex items-center
+                    text-lightPurple text-sm"
+                  >
+                    <p className="
+                      ml-2 lg:ml-0
+                      font-medium"
+                    >
+                      {handleDateTime(item.created_at)}
+                    </p>
+                    <img className="
+                      ml-5 lg:ml-16
+                      cursor-pointer" src={rightArrow} alt=""
+                    />
                   </div>
                 </div>
               </div>
