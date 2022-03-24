@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import dropdownBig from '../assets/dropdownBig.svg';
 
 export default function SortDropdown(props) {
   const [dropDown, setDropDown] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
   const sortType = {
     0: 'Sort by Most Recent',
     1: 'Sort by Oldest'
@@ -10,6 +12,8 @@ export default function SortDropdown(props) {
 
   const handleClick = () => {
     setDropDown(!dropDown);
+    setSearchParams({ sort: `${props.selected ? "newest" : "oldest"}` });
+    console.log(searchParams);
   }
 
   return (
@@ -22,10 +26,9 @@ export default function SortDropdown(props) {
       cursor-pointer" onClick={() => setDropDown(!dropDown)}
     >
       <button className={`
-      hover:bg-purplePaginationBgActive
         w-full
         flex items-center justify-between
-      bg-faintPurple
+        bg-faintPurple hover:bg-purplePaginationBgActive
         ${dropDown ?
           "rounded-t-[5px] hover:bg-yetAnotherFaintPurple" :
           "rounded-[5px]"
@@ -34,6 +37,7 @@ export default function SortDropdown(props) {
       >
         <div className="
           px-5 py-3 
+          whitespace-nowrap
           text-lightPurple"
         >
           {sortType[props.selected]}
