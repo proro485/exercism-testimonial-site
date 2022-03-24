@@ -48,7 +48,10 @@ export default function Navbar() {
         <div className="flex items-center">
           <Explore />
 
-          <div className="hidden xl:flex xl:items-center">
+          <div className="
+            ml-10
+            hidden xl:flex xl:items-center"
+          >
             <Link to="/chatBubble" className="xl:mr-9">
               <img className="
                 h-6
