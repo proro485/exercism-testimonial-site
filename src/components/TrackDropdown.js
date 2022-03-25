@@ -9,8 +9,10 @@ export default function TrackDropdown(props) {
   const URL = "https://exercism.org/api/v2/tracks";
 
   const handleChangeTrack = (track) => {
-    props.setParams({ ...props.params, track: track });
-    props.setSearchParams({ ...props.params, track: track });
+    if (track !== props.params.track) {
+      props.setParams({ ...props.params, track: track });
+      props.setSearchParams({ ...props.params, track: track });
+    }
 
     if (track == "all") {
       setLogo("all");
