@@ -49,13 +49,26 @@ export default function Testimonials(props) {
     async function fetchData() {
       setLoading(true);
 
-      let URL = `https://exercism.org/api/v2/hiring/testimonials?order=${props.order}&page=${props.page.toString()}`;
+      let URL = "https://exercism.org/api/v2/hiring/testimonials?";
 
-      if (props.track !== "all") {
-        URL += "&track=" + props.track;
+      if (props.params.order !== undefined) {
+        URL += `order=${props.params.order}`;
+      } else {
+        URL += "order=newest_first";
       }
-      if (props.exercise !== "") {
-        URL += "&exercise=" + props.exercise;
+
+      if (props.params.page !== undefined) {
+        URL += `&page=${props.params.page.toString()}`;
+      } else {
+        URL += "&page=1";
+      }
+
+      if (props.params.track !== "all" && props.params.track !== undefined) {
+        URL += "&track=" + props.params.track;
+      }
+
+      if (props.exercise !== "" && props.exercise !== undefined) {
+        URL += "&exercise=" + props.params.exercise;
       }
 
       const response = await fetch(URL);
