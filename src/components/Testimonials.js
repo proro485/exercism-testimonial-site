@@ -67,7 +67,7 @@ export default function Testimonials(props) {
         URL += "&track=" + props.params.track;
       }
 
-      if (props.exercise !== "" && props.exercise !== undefined) {
+      if (props.params.exercise !== "" && props.params.exercise !== undefined) {
         URL += "&exercise=" + props.params.exercise;
       }
 
