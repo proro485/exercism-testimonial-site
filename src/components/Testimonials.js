@@ -4,10 +4,8 @@ import rightArrow from '../assets/rightArrow.svg';
 import loader from '../assets/loader.svg';
 
 export default function Testimonials(props) {
-
   const [loading, setLoading] = useState(true);
   const [testimonials, setTestimonials] = useState([]);
-  const URL = `https://exercism.org/api/v2/hiring/testimonials?page=${props.currentPage}&order=${props.sortType}`;
 
   const spliceContent = (content) => {
     const contentArray = content.split('');
@@ -28,17 +26,17 @@ export default function Testimonials(props) {
     ];
 
     if (duration[0] > 0) {
-      return duration[0] != 1 ? `${duration[0]} years ago` : 'a year ago';
+      return duration[0] !== 1 ? `${duration[0]} years ago` : 'a year ago';
     } else if (duration[1] > 0) {
-      return duration[1] != 1 ? `${duration[1]} months ago` : 'a month ago';
+      return duration[1] !== 1 ? `${duration[1]} months ago` : 'a month ago';
     } else if (duration[2] > 0) {
-      return duration[2] != 1 ? `${duration[2]} days ago` : 'a day ago';
+      return duration[2] !== 1 ? `${duration[2]} days ago` : 'a day ago';
     } else if (duration[3] > 0) {
-      return duration[3] != 1 ? `${duration[3]} hours ago` : 'an hour ago';
+      return duration[3] !== 1 ? `${duration[3]} hours ago` : 'an hour ago';
     } else if (duration[4] > 0) {
-      return duration[4] != 1 ? `${duration[4]} minutes ago` : 'a minute ago';
+      return duration[4] !== 1 ? `${duration[4]} minutes ago` : 'a minute ago';
     } else if (duration[5] > 0) {
-      return duration[5] != 1 ? `${duration[5]} seconds ago` : 'a second ago';
+      return duration[5] !== 1 ? `${duration[5]} seconds ago` : 'a second ago';
     }
   }
 
@@ -50,19 +48,22 @@ export default function Testimonials(props) {
 
     async function fetchData() {
       setLoading(true);
-      let finalURL = URL;
-      if (props.whichTrack != 'all') {
-        finalURL = finalURL + '&track=' + props.whichTrack;
+
+      let URL = `https://exercism.org/api/v2/hiring/testimonials?order=${props.order}&page=${props.page.toString()}`;
+
+      if (props.track !== "all") {
+        URL += "&track=" + props.track;
       }
-      if (props.exercise != '') {
-        finalURL = finalURL + '&exercise=' + props.exercise;
+      if (props.exercise !== "") {
+        URL += "&exercise=" + props.exercise;
       }
 
-      const response = await fetch(finalURL);
+      console.log(URL);
+
+      const response = await fetch(URL);
       const { testimonials } = await response.json();
       setTestimonials(testimonials.results);
       setLoading(false);
-      props.setPages(testimonials.pagination.total_pages);
 
       const tracks = { 0: "all" };
       for (let i = 0; i < testimonials.tracks.length; i++) {
@@ -71,18 +72,19 @@ export default function Testimonials(props) {
 
       testimonials.track_counts["all"] = 0;
       for (let i in testimonials.track_counts) {
-        if (i != "all") {
+        if (i !== "all") {
           testimonials.track_counts["all"] += testimonials.track_counts[i];
         }
       }
 
       props.setTracks(tracks);
       props.setTracksCount(testimonials.track_counts);
+      props.setPages(testimonials.pagination.total_pages);
     }
 
     fetchData();
 
-  }, [props.currentPage, props.sortType, props.whichTrack, props.exercise]);
+  }, [props.params]);
 
   return (
     <div className="
@@ -106,7 +108,7 @@ export default function Testimonials(props) {
         </div>
       }
       {
-        testimonials.length != 0 && testimonials.map((item, idx) => {
+        testimonials.length !== 0 && testimonials.map((item, idx) => {
           return (
             <Link className="focus:bg-testimonialPurpleHoverBg"
               to={`/${item.mentor.handle}_${handleExerciseTitle(item.exercise.title)}`} key={idx}

@@ -3,74 +3,80 @@ import leftPointer from '../assets/leftPointer.svg';
 import rightPointer from '../assets/rightPointer.svg';
 
 export default function Pagination(props) {
+  const handlePageClick = (page) => {
+    if (page !== "...") {
+      window.scrollTo(0, 0);
+      props.setParams({ ...props.params, page: parseInt(page) });
+      props.setSearchParams({ ...props.params, page: parseInt(page) });
+    }
+  }
+
   const handlePrevious = () => {
     if (props.currentPage > 1) {
       window.scrollTo(0, 0);
-      props.setCurrentPage(props.currentPage - 1);
+      props.setParams({ ...props.params, page: props.currentPage - 1 });
+      props.setSearchParams({ ...props.params, page: props.currentPage - 1 });
     }
   }
 
   const handleNext = () => {
     if (props.currentPage < props.pages) {
       window.scrollTo(0, 0);
-      props.setCurrentPage(props.currentPage + 1);
+      props.setParams({ ...props.params, page: props.currentPage + 1 });
+      props.setSearchParams({ ...props.params, page: props.currentPage + 1 });
     }
   }
 
   const handleDisablePrevious = () => {
-    if (props.currentPage == 1) {
+    if (props.currentPage === 1) {
       return true;
     }
     return false;
   }
 
   const handleDisableNext = () => {
-    if (props.currentPage == props.pages) {
+    if (props.currentPage === props.pages) {
       return true;
     }
     return false;
   }
 
   const handlePagination = () => {
-    if (props.pages == 1) {
+    if (props.pages === 0) {
+      return ["..."];
+    }
+    else if (props.pages === 1) {
       return [1];
-    } else if (props.pages == 2) {
+    } else if (props.pages === 2) {
       return [1, 2];
-    } else if (props.pages == 3) {
+    } else if (props.pages === 3) {
       return [1, 2, 3];
-    } else if (props.pages == 4) {
+    } else if (props.pages === 4) {
       return [1, 2, 3, 4];
-    } else if (props.pages == 5) {
+    } else if (props.pages === 5) {
       return [1, 2, 3, 4, 5];
-    } else if (props.pages == 6) {
+    } else if (props.pages === 6) {
       return [1, 2, 3, 4, 5, 6];
     }
 
-    if (props.currentPage == 1) {
+    if (props.currentPage === 1) {
       return [1, 2, 3, "...", props.pages];
-    } else if (props.currentPage == 2) {
+    } else if (props.currentPage === 2) {
       return [1, 2, 3, 4, "...", props.pages];
-    } else if (props.currentPage == 3) {
+    } else if (props.currentPage === 3) {
       return [1, 2, 3, 4, 5, "...", props.pages];
-    } else if (props.currentPage == 4) {
+    } else if (props.currentPage === 4) {
       return [1, 2, 3, 4, 5, 6, "...", props.pages];
-    } else if (props.currentPage == props.pages) {
+    } else if (props.currentPage === props.pages) {
       return [1, "...", props.pages - 2, props.pages - 1, props.pages];
-    } else if (props.currentPage == props.pages - 1) {
+    } else if (props.currentPage === props.pages - 1) {
       return [1, "...", props.pages - 3, props.pages - 2, props.pages - 1, props.pages];
-    } else if (props.currentPage == props.pages - 2) {
+    } else if (props.currentPage === props.pages - 2) {
       return [1, "...", props.pages - 4, props.pages - 3, props.pages - 2, props.pages - 1, props.pages];
-    } else if (props.currentPage == props.pages - 3) {
+    } else if (props.currentPage === props.pages - 3) {
       return [1, "...", props.pages - 5, props.pages - 4, props.pages - 3, props.pages - 2, props.pages - 1, props.pages];
     } else {
       return [1, "...", props.currentPage - 2, props.currentPage - 1, props.currentPage, props.currentPage + 1, props.currentPage + 2, "...", props.pages];
-    }
-  }
-
-  const handlePageClick = (page) => {
-    if (page != "...") {
-      window.scrollTo(0, 0);
-      props.setCurrentPage(parseInt(page));
     }
   }
 
@@ -124,7 +130,7 @@ export default function Pagination(props) {
                     cursor-pointer
                     hover:bg-purplePaginationBgActive focus:bg-purplePaginationBgActive
                     hover:text-darkPurple focus:text-darkPurple
-                    ${item != props.currentPage ?
+                    ${item !== props.currentPage ?
                       "border-purplePaginationBorder text-lightPurple" :
                       "border-purplePaginationText text-darkPurple bg-purplePaginationBgActive"
                     }`

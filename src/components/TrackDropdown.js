@@ -5,11 +5,13 @@ import dropdown from '../assets/dropdown.svg'
 export default function TrackDropdown(props) {
   const [dropDown, setDropDown] = useState(false);
   const [allTracks, setAllTracks] = useState([]);
-  let [logo, setLogo] = useState("all");
+  let [logo, setLogo] = useState(props.whichTrack);
   const URL = "https://exercism.org/api/v2/tracks";
 
   const handleChangeTrack = (track) => {
-    props.setWhichTrack(track);
+    props.setParams({ ...props.params, track: track });
+    props.setSearchParams({ ...props.params, track: track });
+
     if (track == "all") {
       setLogo("all");
     } else {
@@ -18,10 +20,19 @@ export default function TrackDropdown(props) {
   }
 
   useEffect(() => {
+    if (Object.keys(allTracks).length !== 0) {
+      if (props.whichTrack == "all") {
+        setLogo("all");
+      } else {
+        setLogo(allTracks[props.whichTrack].icon);
+      }
+    }
+  }, [props.whichTrack, allTracks]);
+
+  useEffect(() => {
   }, [logo]);
 
   useEffect(() => {
-
     async function fetchData() {
       const response = await fetch(URL);
       const { tracks } = await response.json();
@@ -68,7 +79,7 @@ export default function TrackDropdown(props) {
                   w-full 
                   flex items-center justify-between
                 hover:bg-faintPurple focus:bg-faintPurple
-                  ${props.whichTrack == props.tracks[track] && "bg-faintPurple"}
+                  ${props.whichTrack === props.tracks[track] && "bg-faintPurple"}
                   `}
                   key={idx} onClick={() => handleChangeTrack(props.tracks[track])}
                 >
@@ -81,7 +92,7 @@ export default function TrackDropdown(props) {
                       w-4 h-4 sm:w-5 sm:h-5 
                       bg-white checked:bg-testimonialPurpleContent
                       border border-lightPurple checked:border-lightPurple
-                      rounded-full" checked={props.tracks[track] == props.whichTrack} onChange={() => { }}
+                      rounded-full" checked={props.tracks[track] === props.whichTrack} onChange={() => { }}
                     />
                     <img className="mr-4 h-10" src={track != 0 ? `${allTracks[props.tracks[track]].icon}` : hexLogo} alt="" />
                     <div className="text-sm sm:text-base">

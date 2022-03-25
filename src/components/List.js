@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import search from '../assets/search.svg';
 import Testimonials from './Testimonials';
 import SortDropdown from './SortDropdown';
@@ -6,19 +7,30 @@ import TrackDropdown from './TrackDropdown';
 import Pagination from './Pagination';
 
 export default function List(props) {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [selected, setSelected] = useState(0);
-  const [exercise, setExercise] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [params, setParams] = useState({});
   const [pages, setPages] = useState(0);
   const [tracks, setTracks] = useState({});
-  const [whichTrack, setWhichTrack] = useState('all');
-  const sortType = {
-    0: 'newest_first',
-    1: 'oldest_first'
-  }
+
+  useEffect(() => {
+    const page = searchParams.get("page") !== null ? parseInt(searchParams.get("page")) : 1;
+    const order = searchParams.get("order") !== null ? searchParams.get("order") : "newest_first";
+    const track = searchParams.get("track") !== null ? searchParams.get("track") : "all";
+    const exercise = searchParams.get("exercise") !== null ? searchParams.get("exercise") : "";
+
+    setParams({ page: page, order: order, track: track, exercise: exercise });
+  }, []);
 
   const handleChange = (e) => {
-    setExercise(e.target.value);
+    if (e.target.value !== "") {
+      setParams({ ...params, exercise: e.target.value.trim() });
+      setSearchParams({ ...params, exercise: e.target.value.trim() });
+    } else {
+      const newParams = { ...params };
+      delete newParams.exercise;
+      setParams({ ...newParams });
+      setSearchParams({ ...newParams });
+    }
   }
 
   return (
@@ -36,7 +48,13 @@ export default function List(props) {
           mb-3 md:mb-0
           flex items-center"
         >
-          <TrackDropdown tracks={tracks} tracksCount={props.tracksCount} whichTrack={whichTrack} setWhichTrack={setWhichTrack} />
+          <TrackDropdown
+            tracks={tracks}
+            tracksCount={props.tracksCount}
+            searchParams={searchParams} setSearchParams={setSearchParams}
+            params={params} setParams={setParams}
+            whichTrack={params["track"] !== undefined ? params["track"] : "all"}
+          />
           <div className="
             ml-4 mx-1 sm:mx-2
             w-full md:w-4/5
@@ -61,25 +79,38 @@ export default function List(props) {
               rounded-[5px]
               text-sm sm:text-base
               text-inherit placeholder:text-inherit
-              border-none outline-none" value={exercise} onChange={handleChange} type="text" placeholder='Filter by exercise title'
+              border-none outline-none"
+              value={params["exercise"] !== undefined ? params["exercise"] : ""}
+              onChange={handleChange} type="text" placeholder='Filter by exercise title'
             />
           </div>
         </div>
-        <SortDropdown selected={selected} setSelected={setSelected} />
+        <SortDropdown
+          searchParams={searchParams} setSearchParams={setSearchParams}
+          params={params} setParams={setParams}
+        />
       </div>
       <hr className="
         h-[2px]
       bg-purplePaginationBorder
         border-none"
       />
-      <Testimonials currentPage={currentPage} setCurrentPage={setCurrentPage}
-        exercise={exercise}
-        sortType={sortType[selected]}
+      <Testimonials
+        params={params}
+        order={params["order"] !== undefined ? params["order"] : "newest_first"}
+        page={params["page"] !== undefined ? params["page"] : 1}
+        exercise={params["exercise"] !== undefined ? params["exercise"] : ""}
+        track={params["track"] !== undefined ? params["track"] : "all"}
         setPages={setPages}
-        setTracks={setTracks} setTracksCount={props.setTracksCount}
-        whichTrack={whichTrack}
+        setTracks={setTracks}
+        setTracksCount={props.setTracksCount}
       />
-      <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} pages={pages} />
+      <Pagination
+        pages={pages}
+        currentPage={params["page"] !== undefined ? params["page"] : 1}
+        params={params} setParams={setParams}
+        setSearchParams={setSearchParams}
+      />
     </div>
   );
 }

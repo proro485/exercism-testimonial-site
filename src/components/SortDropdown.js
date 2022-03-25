@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+// import { useSearchParams } from 'react-router-dom';
 import dropdownBig from '../assets/dropdownBig.svg';
 
 export default function SortDropdown(props) {
   const [dropDown, setDropDown] = useState(false);
-  const [searchParams, setSearchParams] = useSearchParams();
-  const sortType = {
-    0: 'Sort by Most Recent',
-    1: 'Sort by Oldest'
-  };
 
-  const handleClick = () => {
+  const handleClick = (order) => {
+    if (dropDown && order === "newest_first") {
+      props.setParams({ ...props.params, order: "newest_first" });
+      props.setSearchParams({ ...props.params, order: "newest_first" });
+    } else if (dropDown) {
+      props.setParams({ ...props.params, order: "oldest_first" });
+      props.setSearchParams({ ...props.params, order: "oldest_first" });
+    }
     setDropDown(!dropDown);
-    setSearchParams({ sort: `${props.selected ? "newest" : "oldest"}` });
-    console.log(searchParams);
   }
 
   return (
@@ -23,7 +23,7 @@ export default function SortDropdown(props) {
       md:w-1/2 lg:w-1/4 xl:w-1/5
       font-poppins
       text-sm sm:text-base
-      cursor-pointer" onClick={() => setDropDown(!dropDown)}
+      cursor-pointer"
     >
       <button className={`
         w-full
@@ -33,14 +33,15 @@ export default function SortDropdown(props) {
           "rounded-t-[5px] hover:bg-yetAnotherFaintPurple" :
           "rounded-[5px]"
         }`
-      } onClick={() => props.setSelected(props.selected)}
+      } onClick={() => handleClick("newest_first")}
       >
         <div className="
           px-5 py-3 
           whitespace-nowrap
           text-lightPurple"
         >
-          {sortType[props.selected]}
+          {!dropDown && (props.params["order"] === "oldest_first" ? "Sort by Oldest" : "Sort by Most Recent")}
+          {dropDown && "Sort by Most Recent"}
         </div>
         {
           !dropDown && <img className="pr-5" src={dropdownBig} alt="" />
@@ -55,13 +56,13 @@ export default function SortDropdown(props) {
           bg-faintPurple
           z-10 
           ${dropDown && "hover:bg-yetAnotherFaintPurple"}`
-        } onClick={() => props.setSelected((props.selected + 1) % 2)}
+        } onClick={() => handleClick("oldest_first")}
         >
           <div className="
             px-5 py-3 
             text-lightPurple"
           >
-            {sortType[(props.selected + 1) % 2]}
+            Sort by Oldest
           </div>
         </button>
       }

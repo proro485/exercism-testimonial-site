@@ -22,7 +22,7 @@ export default function Page() {
             Testimonials I've left
           </h2>
           {
-            tracksCount['all'] != undefined && <div className="
+            tracksCount['all'] !== undefined && <div className="
               px-3 py-1 
               text-sm text-lightPurple
               border border-anotherFaintPurple
