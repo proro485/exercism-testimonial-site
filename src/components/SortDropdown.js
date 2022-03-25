@@ -6,12 +6,14 @@ export default function SortDropdown(props) {
   const [dropDown, setDropDown] = useState(false);
 
   const handleClick = (order) => {
-    if (dropDown && order === "newest_first") {
-      props.setParams({ ...props.params, order: "newest_first" });
-      props.setSearchParams({ ...props.params, order: "newest_first" });
-    } else if (dropDown) {
-      props.setParams({ ...props.params, order: "oldest_first" });
-      props.setSearchParams({ ...props.params, order: "oldest_first" });
+    if (order !== props.params.order) {
+      if (dropDown && order === "newest_first") {
+        props.setParams({ ...props.params, order: "newest_first" });
+        props.setSearchParams({ ...props.params, order: "newest_first" });
+      } else if (dropDown) {
+        props.setParams({ ...props.params, order: "oldest_first" });
+        props.setSearchParams({ ...props.params, order: "oldest_first" });
+      }
     }
     setDropDown(!dropDown);
   }
