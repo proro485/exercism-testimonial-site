@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import debounce from 'lodash.debounce';
 import search from '../assets/search.svg';
 import Testimonials from './Testimonials';
 import SortDropdown from './SortDropdown';
@@ -11,6 +12,7 @@ export default function List(props) {
   const [params, setParams] = useState({});
   const [pages, setPages] = useState(0);
   const [tracks, setTracks] = useState({});
+  const [exercise, setExercise] = useState("");
 
   useEffect(() => {
     const page = searchParams.get("page") !== null ? parseInt(searchParams.get("page")) : 1;
@@ -19,12 +21,17 @@ export default function List(props) {
     const exercise = searchParams.get("exercise") !== null ? searchParams.get("exercise") : "";
 
     setParams({ page: page, order: order, track: track, exercise: exercise });
+    setExercise(exercise);
   }, []);
 
   const handleChange = (e) => {
-    if (e.target.value !== "") {
-      setParams({ ...params, exercise: e.target.value.trim() });
-      setSearchParams({ ...params, exercise: e.target.value.trim() });
+    setExercise(e.target.value.trim());
+  }
+
+  const handleSearch = (exercise) => {
+    if (exercise !== "") {
+      setParams({ ...params, exercise: exercise });
+      setSearchParams({ ...params, exercise: exercise });
     } else {
       const newParams = { ...params };
       delete newParams.exercise;
@@ -32,6 +39,14 @@ export default function List(props) {
       setSearchParams({ ...newParams });
     }
   }
+
+  useEffect(() => {
+    if (exercise !== "") {
+      handleSearch(exercise);
+    }
+  }, [exercise]);
+
+  const debounceSearch = debounce(handleChange, 500);
 
   return (
     <div className="
@@ -79,8 +94,7 @@ export default function List(props) {
               text-sm sm:text-base
               text-inherit placeholder:text-inherit
               border-none outline-none"
-              value={params["exercise"] !== undefined ? params["exercise"] : ""}
-              onChange={handleChange} type="text" placeholder='Filter by exercise title'
+              onChange={debounceSearch} type="text" placeholder='Filter by exercise title'
             />
           </div>
         </div>
@@ -96,10 +110,6 @@ export default function List(props) {
       />
       <Testimonials
         params={params}
-        order={params["order"] !== undefined ? params["order"] : "newest_first"}
-        page={params["page"] !== undefined ? params["page"] : 1}
-        exercise={params["exercise"] !== undefined ? params["exercise"] : ""}
-        track={params["track"] !== undefined ? params["track"] : "all"}
         setPages={setPages}
         setTracks={setTracks}
         setTracksCount={props.setTracksCount}
