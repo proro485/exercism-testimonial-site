@@ -58,8 +58,6 @@ export default function Testimonials(props) {
         URL += "&exercise=" + props.exercise;
       }
 
-      console.log(URL);
-
       const response = await fetch(URL);
       const { testimonials } = await response.json();
       setTestimonials(testimonials.results);
