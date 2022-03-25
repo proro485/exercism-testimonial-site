@@ -23,7 +23,6 @@ export default function SortDropdown(props) {
       mx-1 sm:mx-2
       relative
       md:w-1/2 lg:w-1/4 xl:w-1/5
-      font-poppins
       text-sm sm:text-base
       cursor-pointer"
     >

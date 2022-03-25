@@ -88,8 +88,7 @@ export default function Testimonials(props) {
     <div className="
       flex flex-col
       relative 
-      min-h-[70vh]
-      font-poppins"
+      min-h-[70vh]"
     >
       {
         loading && <div className="

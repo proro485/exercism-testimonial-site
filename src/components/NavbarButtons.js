@@ -11,7 +11,7 @@ export default function NavbarButtons(props) {
       to={`/${props.description}`}
     >
       <img className="mr-2" src={props.image} alt="" />
-      <div className={`font-poppins font-semibold ${props.selected ? "text-darkPurple" : "text-lightPurple"}`}>
+      <div className={`font-semibold ${props.selected ? "text-darkPurple" : "text-lightPurple"}`}>
         {props.title}
       </div>
     </Link >

@@ -60,7 +60,6 @@ export default function List(props) {
             w-full md:w-4/5
             flex items-center
             rounded-[5px] 
-            font-poppins
             text-sm sm:text-base
             text-lightPurple hover:text-darkPurple active:text-darkPurple focus-within:text-darkPurple
             border border-white  hover:border-blue active:border-blue focus-within:border-blue

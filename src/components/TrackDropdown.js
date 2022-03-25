@@ -54,7 +54,7 @@ export default function TrackDropdown(props) {
   return (
     <div className="
       relative
-      font-poppins text-trackDropDownText
+      text-trackDropDownText
       cursor-pointer" onClick={() => setDropDown(!dropDown)}
     >
       <button className="flex items-center">

@@ -33,7 +33,7 @@ export default function Explore() {
         <img src={hamburger} alt="" />
         <button className="
           ml-3
-          font-poppins font-semibold"
+          font-semibold"
         >
           Explore
         </button>

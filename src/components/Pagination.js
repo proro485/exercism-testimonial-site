@@ -81,7 +81,7 @@ export default function Pagination(props) {
   }
 
   return (
-    <div className="font-poppins">
+    <div>
       <hr className="
         h-px
       bg-purplePaginationBorder
@@ -139,7 +139,7 @@ export default function Pagination(props) {
                   >
                     {item}
                   </button> :
-                  <span key={idx} className="mx-1 sm:mr-3 text-sm font-poppins">{item}</span>
+                  <span key={idx} className="mx-1 sm:mr-3 text-sm">{item}</span>
               );
             })
           }

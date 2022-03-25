@@ -13,10 +13,10 @@ function App() {
         <Routes>
           <Route path="/dashboard"
             element={
-              <>
+              <div className="font-poppins">
                 <Navbar />
                 <Page />
-              </>
+              </div>
             }
           />
         </Routes>

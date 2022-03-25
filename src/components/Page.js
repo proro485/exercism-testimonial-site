@@ -15,8 +15,7 @@ export default function Page() {
         />
         <div className="
           gap-4
-          flex flex-wrap justify-center items-center
-          font-poppins"
+          flex flex-wrap justify-center items-center"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-darkPurple text-center">
             Testimonials I've left
