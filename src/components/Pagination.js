@@ -4,7 +4,7 @@ import rightPointer from '../assets/rightPointer.svg';
 
 export default function Pagination(props) {
   const handlePageClick = (page) => {
-    if (page !== "...") {
+    if (page !== "..." && page !== props.params.page) {
       window.scrollTo(0, 0);
       props.setParams({ ...props.params, page: parseInt(page) });
       props.setSearchParams({ ...props.params, page: parseInt(page) });
