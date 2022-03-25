@@ -95,12 +95,13 @@ export default function TrackDropdown(props) {
                       rounded-full" checked={props.tracks[track] === props.whichTrack} onChange={() => { }}
                     />
                     <img className="mr-4 h-10" src={track != 0 ? `${allTracks[props.tracks[track]].icon}` : hexLogo} alt="" />
-                    <div className="text-sm sm:text-base">
+                    <div className="text-sm sm:text-base font-medium">
                       {allTracks[props.tracks[track]].title}
                     </div>
                   </div>
                   <div className={`
-                    px-3 py-[3px] text-sm
+                    px-3 py-[3px]
+                    text-sm font-medium
                     border
                     rounded-[100px]
                    ${props.tracks[track] == props.whichTrack ?
