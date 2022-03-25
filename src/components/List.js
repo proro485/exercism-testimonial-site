@@ -41,7 +41,7 @@ export default function List(props) {
   }
 
   useEffect(() => {
-    if (exercise !== "") {
+    if (Object.keys(params).length !== 0) {
       handleSearch(exercise);
     }
   }, [exercise]);
