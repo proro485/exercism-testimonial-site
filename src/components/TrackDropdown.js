@@ -14,7 +14,7 @@ export default function TrackDropdown(props) {
       props.setSearchParams({ ...props.params, track: track });
     }
 
-    if (track == "all") {
+    if (track === "all") {
       setLogo("all");
     } else {
       setLogo(allTracks[track].icon);
@@ -23,7 +23,7 @@ export default function TrackDropdown(props) {
 
   useEffect(() => {
     if (Object.keys(allTracks).length !== 0) {
-      if (props.whichTrack == "all") {
+      if (props.whichTrack === "all") {
         setLogo("all");
       } else {
         setLogo(allTracks[props.whichTrack].icon);
@@ -96,7 +96,7 @@ export default function TrackDropdown(props) {
                       border border-lightPurple checked:border-lightPurple
                       rounded-full" checked={props.tracks[track] === props.whichTrack} onChange={() => { }}
                     />
-                    <img className="mr-4 h-10" src={track != 0 ? `${allTracks[props.tracks[track]].icon}` : hexLogo} alt="" />
+                    <img className="mr-4 h-10" src={track !== 0 ? `${allTracks[props.tracks[track]].icon}` : hexLogo} alt="" />
                     <div className="text-sm sm:text-base font-medium">
                       {allTracks[props.tracks[track]].title}
                     </div>
@@ -106,7 +106,7 @@ export default function TrackDropdown(props) {
                     text-sm font-medium
                     border
                     rounded-[100px]
-                   ${props.tracks[track] == props.whichTrack ?
+                   ${props.tracks[track] === props.whichTrack ?
                       "border-trackDropDownActiveBorder text-darkPurple" :
                       "border-trackDropDownBorder text-lightPurple"
                     }`
