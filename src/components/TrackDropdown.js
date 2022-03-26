@@ -96,7 +96,7 @@ export const TrackDropdown = (props) => {
                       border border-lightPurple checked:border-lightPurple
                       rounded-full" checked={props.tracks[track] === props.whichTrack} onChange={() => { }}
                     />
-                    <img className="mr-4 h-10" src={track !== 0 ? `${allTracks[props.tracks[track]].icon}` : hexLogo} alt="" />
+                    <img className="mr-4 h-10" src={idx !== 0 ? `${allTracks[props.tracks[track]].icon}` : hexLogo} alt="" />
                     <div className="text-sm sm:text-base font-medium">
                       {allTracks[props.tracks[track]].title}
                     </div>
