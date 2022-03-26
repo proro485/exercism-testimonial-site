@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/hiring-frontend-developer/static/css/main.71569055.css",
-    "main.js": "/hiring-frontend-developer/static/js/main.6ae3d7f4.js",
+    "main.js": "/hiring-frontend-developer/static/js/main.464814e2.js",
     "static/media/avatar.svg": "/hiring-frontend-developer/static/media/avatar.ddf1fd7cc34c7ec705b49bff9db217ef.svg",
     "static/media/badge.svg": "/hiring-frontend-developer/static/media/badge.fd9e22868d2722d469064dd7fc68e19d.svg",
     "static/media/logo.svg": "/hiring-frontend-developer/static/media/logo.3816820aae6ba5a6b586b8cb9415cad7.svg",
@@ -27,10 +27,10 @@
     "static/media/dropdownBig.svg": "/hiring-frontend-developer/static/media/dropdownBig.13630f6511af874fa8a97a5fdc433a83.svg",
     "static/media/zigzag.svg": "/hiring-frontend-developer/static/media/zigzag.94a49a9c1d57e2ca7a6bc2195d93e3fc.svg",
     "main.71569055.css.map": "/hiring-frontend-developer/static/css/main.71569055.css.map",
-    "main.6ae3d7f4.js.map": "/hiring-frontend-developer/static/js/main.6ae3d7f4.js.map"
+    "main.464814e2.js.map": "/hiring-frontend-developer/static/js/main.464814e2.js.map"
   },
   "entrypoints": [
     "static/css/main.71569055.css",
-    "static/js/main.6ae3d7f4.js"
+    "static/js/main.464814e2.js"
   ]
 }
