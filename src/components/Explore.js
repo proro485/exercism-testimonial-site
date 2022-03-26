@@ -58,28 +58,28 @@ export const Explore = () => {
               space-x-2
               flex items-center"
             >
-              <Link to="/chatBubble">
+              <Link to="/hiring-frontend-developer/chatBubble">
                 <img className="
                   h-6 sm:h-7 w-auto
                   ml-1 mr-3
                   cursor-pointer" src={chatBubble} alt="Chat Icon"
                 />
               </Link>
-              <Link to="/hexagon">
+              <Link to="/hiring-frontend-developer/hexagon">
                 <img className="
                   h-6 sm:h-7
                   w-auto 
                   cursor-pointer" src={hexagon} alt="Hexagon Icon"
                 />
               </Link>
-              <Link to="/notifications">
+              <Link to="/hiring-frontend-developer/notifications">
                 <img className="
                   h-12 sm:h-16 w-auto
                   mt-2 sm:mt-3
                   cursor-pointer" src={notifications} alt="Notifications Icon"
                 />
               </Link>
-              <Link to="/badge">
+              <Link to="/hiring-frontend-developer/badge">
                 <img className="
                   h-8 sm:h-10
                   mb-1 sm:mb-2

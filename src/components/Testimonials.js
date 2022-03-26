@@ -121,7 +121,7 @@ export const Testimonials = (props) => {
         testimonials.length !== 0 && testimonials.map((item, idx) => {
           return (
             <Link className="focus:bg-testimonialPurpleHoverBg"
-              to={`/${item.mentor.handle}_${handleExerciseTitle(item.exercise.title)}`} key={idx}
+              to={`/hiring-frontend-developer/${item.mentor.handle}_${handleExerciseTitle(item.exercise.title)}`} key={idx}
             >
               <div className="
                 px-7 py-2
