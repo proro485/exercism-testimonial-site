@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/hiring-frontend-developer/dashboard"
+          <Route path="/dashboard"
             element={
               <div className="font-poppins">
                 <Navbar />

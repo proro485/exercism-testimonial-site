@@ -53,23 +53,23 @@ export const Navbar = () => {
             ml-10
             hidden xl:flex xl:items-center"
           >
-            <Link to="/hiring-frontend-developer/chatBubble" className="xl:mr-9">
+            <Link to="/chatBubble" className="xl:mr-9">
               <img className="
                 h-6
                 cursor-pointer" src={chatBubble} alt="Chat Icon" />
             </Link>
-            <Link to="/hiring-frontend-developer/hexagon" className="xl:mr-6">
+            <Link to="/hexagon" className="xl:mr-6">
               <img className="
                 h-6
                 cursor-pointer" src={hexagon} alt="Hexagon Icon" />
             </Link>
-            <Link to="/hiring-frontend-developer/notifications" className="xl:mr-6">
+            <Link to="/notifications" className="xl:mr-6">
               <img className="
                 h-17
                 pt-[14px]
                 cursor-pointer" src={notifications} alt="Notifications Icon" />
             </Link>
-            <Link to="/hiring-frontend-developer/badge" className="xl:mr-10">
+            <Link to="/badge" className="xl:mr-10">
               <img className="
                 h-17
                 pb-[7px]
@@ -77,12 +77,12 @@ export const Navbar = () => {
             </Link>
           </div>
 
-          <Link to="/hiring-frontend-developer/avatar" className="mr-2 sm:mr-4">
+          <Link to="/avatar" className="mr-2 sm:mr-4">
             <img className="
             h-17
             cursor-pointer" src={avatar} alt="Avatar Icon" />
           </Link>
-          <Link to="/hiring-frontend-developer/menu" className="">
+          <Link to="/menu" className="">
             <img className="
               h-17
               cursor-pointer" src={menu} alt="Menu Icon" />
