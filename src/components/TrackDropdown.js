@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import hexLogo from '../assets/hexLogo.svg'
 import dropdown from '../assets/dropdown.svg'
 
-export default function TrackDropdown(props) {
+export const TrackDropdown = (props) => {
   const [dropDown, setDropDown] = useState(false);
   const [allTracks, setAllTracks] = useState([]);
   let [logo, setLogo] = useState(props.whichTrack);

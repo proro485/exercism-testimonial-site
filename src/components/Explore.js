@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import NavbarButtonsExplore from './NavbarButtonsExplore';
+import { NavbarButtonsExplore } from './NavbarButtonsExplore';
+
 import dashboard from '../assets/dashboard.svg';
 import tracks from '../assets/tracks.svg';
 import mentoring from '../assets/mentoring.svg';
@@ -11,7 +12,7 @@ import hexagon from '../assets/hexagon.svg';
 import notifications from '../assets/notifications.svg';
 import badge from '../assets/badge.svg';
 
-export default function Explore() {
+export const Explore = () => {
   const [dropDown, setDropDown] = useState(false);
 
   const handleClick = () => {

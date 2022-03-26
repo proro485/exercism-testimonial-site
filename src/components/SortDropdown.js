@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-// import { useSearchParams } from 'react-router-dom';
 import dropdownBig from '../assets/dropdownBig.svg';
 
-export default function SortDropdown(props) {
+export const SortDropdown = (props) => {
   const [dropDown, setDropDown] = useState(false);
 
   const handleClick = (order) => {

@@ -2,7 +2,7 @@ import React from 'react'
 import leftPointer from '../assets/leftPointer.svg';
 import rightPointer from '../assets/rightPointer.svg';
 
-export default function Pagination(props) {
+export const Pagination = (props) => {
   const handlePageClick = (page) => {
     if (page !== "..." && page !== props.params.page) {
       window.scrollTo(0, 0);

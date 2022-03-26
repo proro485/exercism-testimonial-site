@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function NavbarButtons(props) {
+export const NavbarButtonsExplore = (props) => {
   return (
     <Link className="
       p-2

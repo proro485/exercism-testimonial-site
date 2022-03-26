@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import zigzag from '../assets/zigzag.svg'
 import testimonial from '../assets/testimonial.svg';
-import List from './List';
+import { List } from './List';
 
-export default function Page() {
+export const Page = () => {
   const [tracksCount, setTracksCount] = useState({});
 
   return (

@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { NavbarButtons } from './NavbarButtons';
+import { Explore } from './Explore';
+
 import dashboard from '../assets/dashboard.svg';
 import logo from '../assets/logo.svg';
 import smallLogo from '../assets/smallLogo.svg'
@@ -12,10 +15,8 @@ import hexagon from '../assets/hexagon.svg';
 import badge from '../assets/badge.svg';
 import avatar from '../assets/avatar.svg';
 import menu from '../assets/menu.svg';
-import NavbarButtons from './NavbarButtons';
-import Explore from './Explore';
 
-export default function Navbar() {
+export const Navbar = () => {
   return (
     <nav className="
       h-16

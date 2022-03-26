@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import debounce from 'lodash.debounce';
 import search from '../assets/search.svg';
-import Testimonials from './Testimonials';
-import SortDropdown from './SortDropdown';
-import TrackDropdown from './TrackDropdown';
-import Pagination from './Pagination';
+import { Testimonials } from './Testimonials';
+import { SortDropdown } from './SortDropdown';
+import { TrackDropdown } from './TrackDropdown';
+import { Pagination } from './Pagination';
 
-export default function List(props) {
+export const List = (props) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [params, setParams] = useState({});
   const [pages, setPages] = useState(0);

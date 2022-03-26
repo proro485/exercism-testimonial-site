@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import rightArrow from '../assets/rightArrow.svg';
 import loader from '../assets/loader.svg';
 
-export default function Testimonials(props) {
+export const Testimonials = (props) => {
   const [loading, setLoading] = useState(true);
   const [testimonials, setTestimonials] = useState([]);
 

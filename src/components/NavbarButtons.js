@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function NavbarButtons(props) {
+export const NavbarButtons = (props) => {
   return (
     <Link className="
       xl:pt-1
