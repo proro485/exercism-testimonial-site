@@ -93,7 +93,9 @@ export const Testimonials = (props) => {
       props.setPages(testimonials.pagination.total_pages);
     }
 
-    fetchData();
+    if (Object.keys(props.params).length) {
+      fetchData();
+    }
 
   }, [props.params]);
 
