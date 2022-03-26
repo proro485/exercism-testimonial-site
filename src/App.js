@@ -9,7 +9,7 @@ import {
 function App() {
   return (
     <div className="App">
-      <Router>
+      <Router basename="/hiring-frontend-developer">
         <Routes>
           <Route path="/"
             element={
