@@ -20,8 +20,8 @@ This is the Frontend of Exercism's Testimonials page made with React and styled 
 ![Screenshot from 2022-05-16 11-25-50](https://user-images.githubusercontent.com/72189840/168528328-6ef616b9-2047-4675-a4ed-71bd01dbfefc.png)
 ### Website on Mobile Phones
 <p>
-  <img src="https://user-images.githubusercontent.com/72189840/168527998-2c1d239f-b1c1-436f-a4c5-9a906e8b022d.png" width="300" height="650"/>
-  <img src="https://user-images.githubusercontent.com/72189840/168527542-435bb8f1-e1e1-4439-bfe7-f625e3216da5.png" width="300" height="650"/>
-  <img src="https://user-images.githubusercontent.com/72189840/168527550-2d628065-6c9e-48f1-b4d2-6b8393177684.png" width="300" height="650"/>
+  <img src="https://user-images.githubusercontent.com/72189840/168527998-2c1d239f-b1c1-436f-a4c5-9a906e8b022d.png" width="280" height="620"/>
+  <img src="https://user-images.githubusercontent.com/72189840/168527542-435bb8f1-e1e1-4439-bfe7-f625e3216da5.png" width="280" height="620"/>
+  <img src="https://user-images.githubusercontent.com/72189840/168527550-2d628065-6c9e-48f1-b4d2-6b8393177684.png" width="280" height="620"/>
 </p>
 
