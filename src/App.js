@@ -1,17 +1,14 @@
 import { Navbar } from './components/Navbar';
 import { Page } from './components/Page';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <Router basename="/hiring-frontend-developer">
+      <Router>
         <Routes>
-          <Route path="/"
+          <Route
+            path="/"
             element={
               <div className="font-poppins">
                 <Navbar />

@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import zigzag from '../assets/zigzag.svg'
+import React, { useState } from 'react';
+import zigzag from '../assets/zigzag.svg';
 import testimonial from '../assets/testimonial.svg';
 import { List } from './List';
 
@@ -9,34 +9,43 @@ export const Page = () => {
   return (
     <div className="flex flex-col justify-center">
       <div className="mt-10 mb-9">
-        <img className="
+        <img
+          className="
           mb-3 m-auto
-          block" src={testimonial} alt=""
+          block"
+          src={testimonial}
+          alt=""
         />
-        <div className="
+        <div
+          className="
           gap-4
           flex flex-wrap justify-center items-center"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-darkPurple text-center">
             Testimonials I've left
           </h2>
-          {
-            tracksCount['all'] !== undefined && <div className="
+          {tracksCount['all'] !== undefined && (
+            <div
+              className="
               px-3 py-1 
               text-sm text-lightPurple
               border border-anotherFaintPurple
               rounded-[100px]"
             >
-              {tracksCount["all"]}
+              {tracksCount['all']}
             </div>
-          }
+          )}
         </div>
-        <img className="
+        <img
+          className="
           pt-4
           m-auto
-          block" src={zigzag} alt="" />
+          block"
+          src={zigzag}
+          alt=""
+        />
       </div>
       <List tracksCount={tracksCount} setTracksCount={setTracksCount} />
     </div>
   );
-}
+};

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import rightArrow from '../assets/rightArrow.svg';
 import loader from '../assets/loader.svg';
@@ -9,8 +9,10 @@ export const Testimonials = (props) => {
 
   const spliceContent = (content) => {
     const contentArray = content.split('');
-    return contentArray.length <= 75 ? content : contentArray.slice(0, 75).join('') + ' ...';
-  }
+    return contentArray.length <= 75
+      ? content
+      : contentArray.slice(0, 75).join('') + ' ...';
+  };
 
   const handleDateTime = (dateTime) => {
     const dateTimeNow = new Date();
@@ -22,7 +24,7 @@ export const Testimonials = (props) => {
       Math.floor(difference / (1000 * 60 * 60 * 24)),
       Math.floor(difference / (1000 * 60 * 60)),
       Math.floor(difference / (1000 * 60)),
-      Math.floor(difference / 1000)
+      Math.floor(difference / 1000),
     ];
 
     if (duration[0] > 0) {
@@ -38,37 +40,36 @@ export const Testimonials = (props) => {
     } else if (duration[5] > 0) {
       return duration[5] !== 1 ? `${duration[5]} seconds ago` : 'a second ago';
     }
-  }
+  };
 
   const handleExerciseTitle = (title) => {
     return title.split(' ').join('_');
-  }
+  };
 
   useEffect(() => {
-
     async function fetchData() {
       setLoading(true);
 
-      let URL = "https://exercism.org/api/v2/hiring/testimonials?";
+      let URL = 'https://exercism.org/api/v2/hiring/testimonials?';
 
       if (props.params.order !== undefined) {
         URL += `order=${props.params.order}`;
       } else {
-        URL += "order=newest_first";
+        URL += 'order=newest_first';
       }
 
       if (props.params.page !== undefined) {
         URL += `&page=${props.params.page.toString()}`;
       } else {
-        URL += "&page=1";
+        URL += '&page=1';
       }
 
-      if (props.params.track !== "all" && props.params.track !== undefined) {
-        URL += "&track=" + props.params.track;
+      if (props.params.track !== 'all' && props.params.track !== undefined) {
+        URL += '&track=' + props.params.track;
       }
 
-      if (props.params.exercise !== "" && props.params.exercise !== undefined) {
-        URL += "&exercise=" + props.params.exercise;
+      if (props.params.exercise !== '' && props.params.exercise !== undefined) {
+        URL += '&exercise=' + props.params.exercise;
       }
 
       const response = await fetch(URL);
@@ -76,15 +77,15 @@ export const Testimonials = (props) => {
       setTestimonials(testimonials.results);
       setLoading(false);
 
-      const tracks = { 0: "all" };
+      const tracks = { 0: 'all' };
       for (let i = 0; i < testimonials.tracks.length; i++) {
         tracks[i + 1] = testimonials.tracks[i];
       }
 
-      testimonials.track_counts["all"] = 0;
+      testimonials.track_counts['all'] = 0;
       for (let i in testimonials.track_counts) {
-        if (i !== "all") {
-          testimonials.track_counts["all"] += testimonials.track_counts[i];
+        if (i !== 'all') {
+          testimonials.track_counts['all'] += testimonials.track_counts[i];
         }
       }
 
@@ -96,43 +97,53 @@ export const Testimonials = (props) => {
     if (Object.keys(props.params).length) {
       fetchData();
     }
-
   }, [props.params]);
 
   return (
-    <div className="
+    <div
+      className="
       flex flex-col
       relative 
       min-h-[70vh]"
     >
-      {
-        loading && <div className="
+      {loading && (
+        <div
+          className="
           absolute 
           w-full h-full 
           bg-overlayWhite/95
           flex justify-center"
         >
-          <img className="
+          <img
+            className="
             animate-spin
             h-14
-            relative top-[25vh]" src={loader} alt=""
+            relative top-[25vh]"
+            src={loader}
+            alt=""
           />
         </div>
-      }
-      {
-        testimonials.length !== 0 && testimonials.map((item, idx) => {
+      )}
+      {testimonials.length !== 0 &&
+        testimonials.map((item, idx) => {
           return (
-            <Link className="focus:bg-testimonialPurpleHoverBg"
-              to={`/${item.mentor.handle}_${handleExerciseTitle(item.exercise.title)}`} key={idx}
+            <Link
+              className="focus:bg-testimonialPurpleHoverBg"
+              to={`/${item.mentor.handle}_${handleExerciseTitle(
+                item.exercise.title
+              )}`}
+              key={idx}
             >
-              <div className="
+              <div
+                className="
                 px-7 py-2
                 flex items-center justify-between
                 min-h-[64px] 
               hover:bg-testimonialPurpleHoverBg
                 border-b border-testimonialPurpleBorder"
               >
-                <div className="
+                <div
+                  className="
                   w-1/2
                   flex items-center"
                 >
@@ -140,16 +151,22 @@ export const Testimonials = (props) => {
                     <img className="h-full" src={item.track.icon_url} alt="" />
                   </div>
                   <div className="h-[42px] ml-6">
-                    <img className="h-full rounded-full" src={item.mentor.avatar_url} alt="" />
+                    <img
+                      className="h-full rounded-full"
+                      src={item.mentor.avatar_url}
+                      alt=""
+                    />
                   </div>
                   <div className="details ml-5 ">
-                    <div className="
+                    <div
+                      className="
                       hidden sm:flex
                       font-medium text-sm sm:text-base text-darkPurple"
                     >
                       {item.mentor.handle}
                     </div>
-                    <div className="
+                    <div
+                      className="
                       hidden lg:flex 
                       text-sm text-lightPurple"
                     >
@@ -158,11 +175,13 @@ export const Testimonials = (props) => {
                   </div>
                 </div>
 
-                <div className="
+                <div
+                  className="
                   flex justify-between
                   w-fit md:w-full"
                 >
-                  <div className="
+                  <div
+                    className="
                     ml-5
                     hidden md:flex md:flex-wrap items-center
                     w-2/3 xl:w-fit 
@@ -170,27 +189,31 @@ export const Testimonials = (props) => {
                   >
                     {spliceContent(item.content)}
                   </div>
-                  <div className="
+                  <div
+                    className="
                     flex items-center
                     text-lightPurple text-sm"
                   >
-                    <p className="
+                    <p
+                      className="
                       ml-2 lg:ml-0
                       font-medium"
                     >
                       {handleDateTime(item.created_at)}
                     </p>
-                    <img className="
+                    <img
+                      className="
                       ml-5 lg:ml-16
-                      cursor-pointer" src={rightArrow} alt=""
+                      cursor-pointer"
+                      src={rightArrow}
+                      alt=""
                     />
                   </div>
                 </div>
               </div>
             </Link>
           );
-        })
-      }
-    </div >
+        })}
+    </div>
   );
-}
+};

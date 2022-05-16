@@ -12,13 +12,21 @@ export const List = (props) => {
   const [params, setParams] = useState({});
   const [pages, setPages] = useState(0);
   const [tracks, setTracks] = useState({});
-  const [exercise, setExercise] = useState("");
+  const [exercise, setExercise] = useState('');
 
   useEffect(() => {
-    const page = searchParams.get("page") !== null ? parseInt(searchParams.get("page")) : 1;
-    const order = searchParams.get("order") !== null ? searchParams.get("order") : "newest_first";
-    const track = searchParams.get("track") !== null ? searchParams.get("track") : "all";
-    const exercise = searchParams.get("exercise") !== null ? searchParams.get("exercise") : "";
+    const page =
+      searchParams.get('page') !== null
+        ? parseInt(searchParams.get('page'))
+        : 1;
+    const order =
+      searchParams.get('order') !== null
+        ? searchParams.get('order')
+        : 'newest_first';
+    const track =
+      searchParams.get('track') !== null ? searchParams.get('track') : 'all';
+    const exercise =
+      searchParams.get('exercise') !== null ? searchParams.get('exercise') : '';
 
     setParams({ page: page, order: order, track: track, exercise: exercise });
     setExercise(exercise);
@@ -26,10 +34,10 @@ export const List = (props) => {
 
   const handleChange = (e) => {
     setExercise(e.target.value.trim());
-  }
+  };
 
   const handleSearch = (exercise) => {
-    if (exercise !== "") {
+    if (exercise !== '') {
       setParams({ ...params, exercise: exercise });
       setSearchParams({ ...params, exercise: exercise });
     } else {
@@ -38,7 +46,7 @@ export const List = (props) => {
       setParams({ ...newParams });
       setSearchParams({ ...newParams });
     }
-  }
+  };
 
   useEffect(() => {
     if (Object.keys(params).length !== 0) {
@@ -49,28 +57,34 @@ export const List = (props) => {
   const debounceSearch = debounce(handleChange, 500);
 
   return (
-    <div className="
+    <div
+      className="
       min-h-[70vh]
       mb-11 mx-4 sm:mx-8
       rounded-lg
       shadow-darker"
     >
-      <div className="
+      <div
+        className="
         m-4
         md:flex md:justify-between"
       >
-        <div className="
+        <div
+          className="
           mb-3 md:mb-0
           flex items-center"
         >
           <TrackDropdown
             tracks={tracks}
             tracksCount={props.tracksCount}
-            searchParams={searchParams} setSearchParams={setSearchParams}
-            params={params} setParams={setParams}
-            whichTrack={params["track"] !== undefined ? params["track"] : "all"}
+            searchParams={searchParams}
+            setSearchParams={setSearchParams}
+            params={params}
+            setParams={setParams}
+            whichTrack={params['track'] !== undefined ? params['track'] : 'all'}
           />
-          <div className="
+          <div
+            className="
             ml-4 mx-1 sm:mx-2
             w-full md:w-4/5
             flex items-center
@@ -81,11 +95,15 @@ export const List = (props) => {
             bg-faintPurple active:bg-yetAnotherFaintPurple focus-within:bg-white 
             hover:shadow-blueish active:shadow-blueish focus-within:shadow-blueish"
           >
-            <img className="
+            <img
+              className="
               ml-3 sm:ml-5
-              h-5 sm:h-6" src={search} alt=""
+              h-5 sm:h-6"
+              src={search}
+              alt=""
             />
-            <input className="
+            <input
+              className="
               py-3
               mx-2 sm:mx-5
               bg-inherit
@@ -94,16 +112,21 @@ export const List = (props) => {
               text-sm sm:text-base
               text-inherit placeholder:text-inherit
               border-none outline-none"
-              onChange={debounceSearch} type="text" placeholder='Filter by exercise title'
+              onChange={debounceSearch}
+              type="text"
+              placeholder="Filter by exercise title"
             />
           </div>
         </div>
         <SortDropdown
-          searchParams={searchParams} setSearchParams={setSearchParams}
-          params={params} setParams={setParams}
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
+          params={params}
+          setParams={setParams}
         />
       </div>
-      <hr className="
+      <hr
+        className="
         h-[2px]
       bg-purplePaginationBorder
         border-none"
@@ -116,10 +139,11 @@ export const List = (props) => {
       />
       <Pagination
         pages={pages}
-        currentPage={params["page"] !== undefined ? params["page"] : 1}
-        params={params} setParams={setParams}
+        currentPage={params['page'] !== undefined ? params['page'] : 1}
+        params={params}
+        setParams={setParams}
         setSearchParams={setSearchParams}
       />
     </div>
   );
-}
+};

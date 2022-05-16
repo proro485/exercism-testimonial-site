@@ -17,11 +17,12 @@ export const Explore = () => {
 
   const handleClick = () => {
     setDropDown(!dropDown);
-  }
+  };
 
   return (
     <div>
-      <div className="
+      <div
+        className="
         rounded
         px-4 py-2 
         mr-2 sm:mr-4 
@@ -29,19 +30,21 @@ export const Explore = () => {
         text-darkPurple text-[15px]
         border border-darkPurple 
         flex xl:hidden items-center 
-        shadow-light hover:shadow-dark" onClick={handleClick}
+        shadow-light hover:shadow-dark"
+        onClick={handleClick}
       >
         <img src={hamburger} alt="" />
-        <button className="
+        <button
+          className="
           ml-3
           font-semibold"
         >
           Explore
         </button>
-
       </div>
-      {
-        dropDown && <div className="
+      {dropDown && (
+        <div
+          className="
           absolute right-11 sm:right-10 left-auto
           pb-4
           mt-2   
@@ -50,59 +53,95 @@ export const Explore = () => {
           shadow-medium 
           z-20"
         >
-          <div className="
+          <div
+            className="
             px-4 
             flex flex-wrap items-center"
           >
-            <div className="
+            <div
+              className="
               space-x-2
               flex items-center"
             >
               <Link to="/chatBubble">
-                <img className="
+                <img
+                  className="
                   h-6 sm:h-7 w-auto
                   ml-1 mr-3
-                  cursor-pointer" src={chatBubble} alt="Chat Icon"
+                  cursor-pointer"
+                  src={chatBubble}
+                  alt="Chat Icon"
                 />
               </Link>
               <Link to="/hexagon">
-                <img className="
+                <img
+                  className="
                   h-6 sm:h-7
                   w-auto 
-                  cursor-pointer" src={hexagon} alt="Hexagon Icon"
+                  cursor-pointer"
+                  src={hexagon}
+                  alt="Hexagon Icon"
                 />
               </Link>
               <Link to="/notifications">
-                <img className="
+                <img
+                  className="
                   h-12 sm:h-16 w-auto
                   mt-2 sm:mt-3
-                  cursor-pointer" src={notifications} alt="Notifications Icon"
+                  cursor-pointer"
+                  src={notifications}
+                  alt="Notifications Icon"
                 />
               </Link>
               <Link to="/badge">
-                <img className="
+                <img
+                  className="
                   h-8 sm:h-10
                   mb-1 sm:mb-2
-                  cursor-pointer" src={badge} alt="Badge Icon"
+                  cursor-pointer"
+                  src={badge}
+                  alt="Badge Icon"
                 />
               </Link>
             </div>
           </div>
-          <hr className="
+          <hr
+            className="
             h-[2px]
             border-none 
             bg-lighterPurple"
           />
-          <div className="
+          <div
+            className="
             mt-3"
           >
-            <NavbarButtonsExplore title="Dashboard" image={dashboard} selected={true} description="dashboard" />
-            <NavbarButtonsExplore title="Tracks" image={tracks} selected={false} description="tracks" />
-            <NavbarButtonsExplore title="Mentoring" image={mentoring} selected={false} description="mentoring" />
-            <NavbarButtonsExplore title="Contribute" image={contribute} selected={false} description="contribute" />
+            <NavbarButtonsExplore
+              title="Dashboard"
+              image={dashboard}
+              selected={true}
+              description="dashboard"
+            />
+            <NavbarButtonsExplore
+              title="Tracks"
+              image={tracks}
+              selected={false}
+              description="tracks"
+            />
+            <NavbarButtonsExplore
+              title="Mentoring"
+              image={mentoring}
+              selected={false}
+              description="mentoring"
+            />
+            <NavbarButtonsExplore
+              title="Contribute"
+              image={contribute}
+              selected={false}
+              description="contribute"
+            />
           </div>
         </div>
-      }
-    </div >
+      )}
+    </div>
   );
-}
+};
